@@ -1,0 +1,17 @@
+body {
+  text-align: center;
+}
+
+#birthday-greeting {
+  font-size: 64px;
+  color: red;
+}
+
+.button {
+  background-color: blue;
+  color: white;
+}
+
+#thereSMore {
+  display: none;
+}
