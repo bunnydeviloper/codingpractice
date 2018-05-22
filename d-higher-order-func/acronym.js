@@ -9,3 +9,9 @@ const acronym = (string, i=0, newStr='') => {
 
 console.log(acronym('hello my name is Sexy Sophia'));
 console.log(acronym('the Beauty and Joy of Computing'));
+
+// second way:
+const acro2 = (sentence) => {
+  return sentence.split(' ').filter(e => e.length > 3).map(e => e[0]).join('');
+};
+console.log(acro2('The United States of America'));
