@@ -15,11 +15,33 @@ console.log(frankenstein('sophia',
   w => w.split('').reverse().join('')));  // action3: reverse word
 
 // recommended way:
-const compose = (x, f, g, h) => f(g(h(x)));
+const compose = (f, g, h) => (x) => f(g(h(x)));
 const dupFront = (s) => s[0] + s;
 const doubleStr = (s) => s + s;
 const reverse = (s) => s.split('').reverse().join('');
 
-const franken2 = (x) => compose(x, reverse, dupFront, doubleStr);
+const franken2 = compose(reverse, dupFront, doubleStr);
 
-console.log(franken2('cal'));
+console.log('SECOND WAY: ', franken2('cal'));
+console.log('SECOND WAY: ', franken2('javascript'));
+console.log('SECOND WAY: ', franken2('beautiful'));
+console.log('SECOND WAY: ', franken2('sophia'));
+
+// FUN to-do: create a game: 
+// user input a word, 'encrypt' the word, then console.log it
+// User#2 comes, decrypt, then console.log the original message
+
+//first you have 'laclacc'
+//then you reverse 'ccalcal'
+//then you remove first letter 'calcal'
+//then you remove half 'cal'
+
+const removeFront = (s) => s.substring(1);
+const cutHalf = (s) => s.substring((s.length + 1)/2);
+
+const decrypt = compose(cutHalf, removeFront, reverse);
+
+console.log('DECRYPT: ', decrypt(franken2('cal')));
+console.log('DECRYPT: ', decrypt(franken2('javascript')));
+console.log('DECRYPT: ', decrypt(franken2('beautiful')));
+console.log('DECRYPT: ', decrypt(franken2('sophia')));
