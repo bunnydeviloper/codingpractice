@@ -10,7 +10,7 @@ const myTree = new Node('Learn', new Node('JavaScript', null, null), new Node('a
 
 console.log(myTree);
 
-// create a function that walks the tree from top to bottom, left to right (DFS?)
+// create a function that walks the tree from top to bottom, left to right (BFS?)
 function walk(tree, fn) {
   if (tree) {
     fn(tree.value);
@@ -20,3 +20,9 @@ function walk(tree, fn) {
 }
 
 walk(myTree, s => console.log(s)); // Learn JavaScript and Data Structure
+
+const anotherTree = new Node('root', new Node('child1 of root', new Node('baby1 of child1', null,
+  null), new Node('baby2 of child1', null, null)), new Node('child2 of root', null, null));
+
+console.log(anotherTree);
+walk(anotherTree, s => console.log(s));
