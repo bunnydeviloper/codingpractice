@@ -27,33 +27,38 @@ Tree.prototype.traverseDFS = function (cb) {
 }
 
 // create a tree with 2 childs, first child has 2 babies, second child doesn't have any babies
-const DFStree = new Tree('root');
-DFStree.root.children.push(new Node('child1 of root'));
-DFStree.root.children[0].parent = DFStree.root;
+const testTree = new Tree('root');
+testTree.root.children.push(new Node('child1 of root'));
+testTree.root.children[0].parent = testTree.root;
 
-DFStree.root.children[0].children.push(new Node('baby1 of child1'));
-DFStree.root.children[0].children[0].parent = DFStree.root.children[0];
+testTree.root.children[0].children.push(new Node('baby1 of child1'));
+testTree.root.children[0].children[0].parent = testTree.root.children[0];
 
-DFStree.root.children[0].children.push(new Node('baby2 of child1'));
-DFStree.root.children[0].children[1].parent = DFStree.root.children[0];
+testTree.root.children[0].children.push(new Node('baby2 of child1'));
+testTree.root.children[0].children[1].parent = testTree.root.children[0];
 
-DFStree.root.children.push(new Node('child2 of root'));
-DFStree.root.children[1].parent = DFStree.root;
+testTree.root.children.push(new Node('child2 of root'));
+testTree.root.children[1].parent = testTree.root;
 
-// console.log(DFStree);
-console.dir(DFStree, {depth: null});
+// console.log(testTree);
+console.dir(testTree, {depth: null});
 
-DFStree.traverseDFS(s => console.log(s.value));
+testTree.traverseDFS(s => console.log(s.value));
 
 // Implement Breath-First Search
 Tree.prototype.traverseBFS = function(cb) {
-  let queue = new Queue();
-  queue = enqueue(this.root);
-  currentTree = queue.dequeue();
+  let queue = [];
+  queue.unshift(this.root); // add root element to the beginning of the queue
+  let currentTree = queue.shift(); // remove outer key of root element, just keep the value of root
 
   while(currentTree) {
-    for (let i=0, len = currentTree.length; i<len; i++) {
-
+    for (let i=0, len = currentTree.children.length; i<len; i++) {
+      // add all children of current Tree to the queue (same depth level) (child1, child2)
+      queue.unshift(currentTree.children[i]);
     }
+    cb(currentTree);
+    currentTree = queue.shift();
   }
 }
+
+testTree.traverseBFS(s => console.log(s.value));
