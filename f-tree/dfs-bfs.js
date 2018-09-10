@@ -73,3 +73,15 @@ Tree.prototype.traverseBFS = function(cb) {
 }
 
 testTree.traverseBFS(s => console.log(s.value));
+
+// Define a method that enable us to apply cb to either traverseDFS or traverseBFS
+Tree.prototype.contains = function(cb, traverseMethod) {
+  traverseMethod.call(this, cb);
+}
+
+// Test contains method
+function checkbaby1(s) {
+  if (s.value === 'baby1 of child1') console.log('Found it');
+}
+const bfs = Tree.prototype.traverseBFS;
+testTree.contains(checkbaby1, bfs);
