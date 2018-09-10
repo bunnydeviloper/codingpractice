@@ -26,13 +26,19 @@ Tree.prototype.traverseDFS = function (cb) {
 }
 
 const DFStree = new Tree('root');
-DFStree.children.push(new Node('child1 of root'));
-DFStree.children[0].parent = DFStree;
+DFStree.root.children.push(new Node('child1 of root'));
+DFStree.root.children[0].parent = DFStree.root;
 
-DFStree.children[0].push(new Node('baby1 of child1'));
-DFStree.children[0].children[0].parent = DFStree.root.children[0];
+DFStree.root.children[0].children.push(new Node('baby1 of child1'));
+DFStree.root.children[0].children[0].parent = DFStree.root.children[0];
 
-DFStree.children.push(new Node('child2 of root'));
-DFStree.children[1].parent = DFStree;
+DFStree.root.children[0].children.push(new Node('baby2 of child1'));
+DFStree.root.children[0].children[1].parent = DFStree.root.children[0];
 
-console.log(DFStree);
+DFStree.root.children.push(new Node('child2 of root'));
+DFStree.root.children[1].parent = DFStree.root;
+
+// console.log(DFStree);
+console.dir(DFStree, {depth: null});
+
+DFStree.traverseDFS(s => console.log(s.value));
