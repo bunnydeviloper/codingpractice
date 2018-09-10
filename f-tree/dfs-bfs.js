@@ -40,6 +40,17 @@ testTree.root.children[0].children[1].parent = testTree.root.children[0];
 testTree.root.children.push(new Node('child2 of root'));
 testTree.root.children[1].parent = testTree.root;
 
+/* Changed order, move all babies from child1 to child 2, to see order of execution for BFS
+testTree.root.children.push(new Node('child2 of root'));
+testTree.root.children[1].parent = testTree.root;
+
+testTree.root.children[1].children.push(new Node('baby1 of child2'));
+testTree.root.children[1].children[0].parent = testTree.root.children[1];
+
+testTree.root.children[1].children.push(new Node('baby2 of child2'));
+testTree.root.children[1].children[1].parent = testTree.root.children[1];
+*/
+
 // console.log(testTree);
 console.dir(testTree, {depth: null});
 
