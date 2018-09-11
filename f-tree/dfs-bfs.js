@@ -70,18 +70,35 @@ Tree.prototype.traverseBFS = function(cb) {
     cb(currentTree);
     currentTree = queue.shift();
   }
-}
+};
 
 testTree.traverseBFS(s => console.log(s.value));
 
 // Define a method that enable us to apply cb to either traverseDFS or traverseBFS
 Tree.prototype.contains = function(cb, traverseMethod) {
   traverseMethod.call(this, cb);
-}
+};
 
 // Test contains method
 function checkbaby1(s) {
   if (s.value === 'baby1 of child1') console.log('Found it');
 }
-const bfs = Tree.prototype.traverseBFS;
-testTree.contains(checkbaby1, bfs);
+testTree.contains(checkbaby1, testTree.traverseBFS);
+
+// Define a method to add a node to a specific node
+Tree.prototype.add = function(value, parentValue, traversal) {
+  // initialize some variables
+  let child = new Node(value);
+  let parent = null;
+  let cb = function(node) {
+    if (node.value === parentValue) parent = node;
+  };
+  this.contains(cb, traversal);
+
+  if (parent) {
+    parent.children.push(child);
+    child.parent = parent;
+  } else {
+    throw new Error('Cannot add node to a non-existent parent.');
+  }
+};
