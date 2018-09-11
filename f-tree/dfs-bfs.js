@@ -105,5 +105,6 @@ Tree.prototype.add = function(value, parentValue, traversal) {
   }
 };
 
-testTree.add('newborn baby1 of child2', 'child2 of root', testTree.traverseDFS);
-console.dir(testTree);
+testTree.add('newborn1 girl of child2', 'child2 of root', testTree.traverseDFS);
+testTree.add('newborn2 boy of baby1', 'baby1 of child1', testTree.traverseDFS);
+console.dir(testTree, {depth: null});
