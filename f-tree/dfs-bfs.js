@@ -91,7 +91,7 @@ Tree.prototype.add = function(value, parentValue, traversal) {
   let child = new Node(value);
   let parent = null;
 
-  let cb = function(node) {
+  const cb = function(node) {
     if (node.value === parentValue) parent = node; // find a node based on parentValue
     // then reassign that node to be the parent of newly created 'child' Node above
   };
@@ -107,4 +107,29 @@ Tree.prototype.add = function(value, parentValue, traversal) {
 
 testTree.add('newborn1 girl of child2', 'child2 of root', testTree.traverseDFS);
 testTree.add('newborn2 boy of baby1', 'baby1 of child1', testTree.traverseDFS);
+console.dir(testTree, {depth: null});
+
+// Define a method to remove a node and all of its children
+Tree.prototyp.remove = function(value, parentValue, traversal) {
+  let tree = this;
+  let parent = null;
+  let childToRemove = null;
+  let index;
+
+  const cb = function(node) {
+    if (node.value === parentValue) parent = node;
+  };
+  this.contains(cb, traversal);
+
+  if (parent) {
+    index = parent.children.indexOf(value);
+    if (index === -1) throw new Error('Node to remove does not exist.');
+    else childToRemove = parent.children.splice(index, 1);
+  } else {
+    throw new Error('Parent does not exist');
+  }
+  return childToRemove;
+};
+
+testTree.remove('baby2 of child1', 'child1 of root', testTree.traversalBFS);
 console.dir(testTree, {depth: null});
