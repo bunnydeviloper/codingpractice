@@ -131,5 +131,6 @@ Tree.prototype.remove = function(value, parentValue, traversal) {
 };
 
 // testTree.remove('baby2 of child1', 'child1 of root', testTree.traverseBFS);
-testTree.remove('baby1 of child1', 'child1 of root', testTree.traverseBFS);
+// testTree.remove('baby1 of child1', 'child1 of root', testTree.traverseBFS);
+testTree.remove('child1 of root', 'root', testTree.traverseBFS);
 console.dir(testTree, {depth: null});
