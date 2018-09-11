@@ -90,8 +90,10 @@ Tree.prototype.add = function(value, parentValue, traversal) {
   // initialize some variables
   let child = new Node(value);
   let parent = null;
+
   let cb = function(node) {
-    if (node.value === parentValue) parent = node;
+    if (node.value === parentValue) parent = node; // find a node based on parentValue
+    // then reassign that node to be the parent of newly created 'child' Node above
   };
   this.contains(cb, traversal);
 
@@ -102,3 +104,6 @@ Tree.prototype.add = function(value, parentValue, traversal) {
     throw new Error('Cannot add node to a non-existent parent.');
   }
 };
+
+testTree.add('newborn baby1 of child2', 'child2 of root', testTree.traverseDFS);
+console.dir(testTree);
