@@ -85,6 +85,17 @@ SinglyLL.prototype.getTail = function() {
 };
 console.log('The tail is: ', mysll.getTail()); // The tail is: third one
 
+// clear the linked list completely
+SinglyLL.prototype.clear = function() { this.head = null; };
+
+// remove the first node from a linked list
+SinglyLL.prototype.removeFirst = function() {
+  this.head = this.head.next;
+};
+mysll.removeFirst();
+console.dir(mysll, {depth: null});
+mysll.addToHead('add origin after remove');
+
 // remove a node from a singly linked list (note: there's no previous node)
 // note: to "remove" means drop the pointer reference to the node
 SinglyLL.prototype.remove = function(value) {
