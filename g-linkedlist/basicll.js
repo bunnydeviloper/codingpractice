@@ -56,6 +56,35 @@ mysll.addToHead('before first');
 mysll.addToHead('origin');
 console.dir(mysll, {depth: null});
 
+// find the size of the linked list
+SinglyLL.prototype.size = function() {
+  let current = this.head;
+  let counter = 0;
+  while(current.next) {
+    counter++;
+    current = current.next;
+  }
+  return counter;
+};
+
+console.log('Size of mysll is: ', mysll.size()); // Size of mysll is: 4
+
+// get the value from the head of a linked list
+SinglyLL.prototype.getHead = function() {
+  return this.head.value || null;
+};
+console.log('The head is: ', mysll.getHead()); // The head is: origin
+
+// get the value from the tail of a linked list
+SinglyLL.prototype.getTail = function() {
+  let current = this.head;
+  while (current.next) {
+    current = current.next;
+  }
+  return current.value;
+};
+console.log('The tail is: ', mysll.getTail()); // The tail is: third one
+
 // remove a node from a singly linked list (note: there's no previous node)
 // note: to "remove" means drop the pointer reference to the node
 SinglyLL.prototype.remove = function(value) {
