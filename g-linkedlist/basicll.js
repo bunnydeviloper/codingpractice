@@ -12,12 +12,12 @@ myQueue.push(1);
 myQueue.shift();
 
 // implement singly linked list
-function singlyLL() {
+function SinglyLL() {
   this.head = null;
 }
 
 // add a node to a singly linked list
-singlyLL.prototype.push = function (value) {
+SinglyLL.prototype.push = function (value) {
   // first, create a node with the provided value
   const node = {
     value: value,
@@ -39,7 +39,7 @@ singlyLL.prototype.push = function (value) {
 };
 
 // test case for adding a node to singly linked list
-const mysll = new singlyLL()
+const mysll = new SinglyLL()
 mysll.push('first one');
 mysll.push('second one');
 mysll.push('third one');
