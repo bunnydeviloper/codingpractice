@@ -38,11 +38,9 @@ singlyLL.prototype.push = function (value) {
   }
 };
 
-const mysll = singlyLL();
+// test case for adding a node to singly linked list
+const mysll = new singlyLL()
 mysll.push('first one');
 mysll.push('second one');
 mysll.push('third one');
-console.log(mysll);
-
-
-// implement double linked list
+console.dir(mysll, {depth: null});
