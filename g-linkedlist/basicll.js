@@ -63,15 +63,16 @@ SinglyLL.prototype.remove = function(value) {
   if (current.value === value) {
     // case1: head is the node we're looking for, simply change the head to the next one
     this.head = current.next;
-  // if (this.head.value === value) {
-    // this.head = this.head.next;
-  } else if {
+    console.log('Found it, node is at the head of LL');
+  } else {
     let previous = current;
+  
 
     // case2: if the node is somewhere in middle, you have to go through each node to find it
     while (current.next) {
       if (current.value === value) { // base case: found the node
         previous.next = current.next; // remove the "pointer"
+        console.log('Found it, node is somewhere in the middle of LL');
         break; // break out of while loop
       }
       // haven't found yet, keep looping through the list
@@ -82,12 +83,14 @@ SinglyLL.prototype.remove = function(value) {
     // case3: we've reached the tail now, the node before current node will have .next = null
     if (current.value === value) {
       previous.next = null;
+      console.log('Found it, node is at the tail of LL');
+    } else {
+      console.log('Reached the end, cannot find node in the linked list!');
     }
-  } else {
-    console.log('Cannot find node in the linked list!');
   }
 };
 
 mysll.remove('test test, should send back error');
-mysll.remove('third one');
+// mysll.remove('third one');
+mysll.remove('before first');
 console.dir(mysll, {depth: null});
