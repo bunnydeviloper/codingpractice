@@ -38,5 +38,11 @@ singlyLL.prototype.push = function (value) {
   }
 };
 
+const mysll = singlyLL();
+mysll.push('first one');
+mysll.push('second one');
+mysll.push('third one');
+console.log(mysll);
+
 
 // implement double linked list
