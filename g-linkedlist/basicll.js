@@ -16,17 +16,17 @@ function SinglyLL() {
   this.head = null;
 }
 
+// constructor function for a new Node
+function Node(value, next) {
+  this.value = value;
+  this.next = next;
+}
+
 // add a node to the end (tail) of a singly linked list
 SinglyLL.prototype.addToTail = function (value) {
-  // first, create a node with the provided value
-  const node = {
-    value: value,
-    next: null
-  };
-
-  // second, find out if there's a head, if there's no head, then the new node will be the head
+  // first, find out if there's a head, if there's no head, then the new node will be the head
   if (!this.head) {
-    this.head = node;
+    this.head = new Node(value, null);
   } else {
     // else, change the current node to the next node, walk through the chain until you reach the tail
     let current = this.head;
@@ -34,7 +34,7 @@ SinglyLL.prototype.addToTail = function (value) {
       current = current.next;
     }
     // when you finished walking the chain, assign the node as the last item in the LL
-    current.next = node;
+    current.next = new Node(value, null);
   }
 };
 
@@ -44,6 +44,11 @@ mysll.addToTail('first one');
 mysll.addToTail('second one');
 mysll.addToTail('third one');
 console.dir(mysll, {depth: null});
+
+// add a node to the head of a singly linked list
+SinglyLL.prototype.addToHead = function(value) {
+  const newNode = new Node(value, null);
+};
 
 // remove a node from a singly linked list (note: there's no previous node)
 SinglyLL.prototype.remove = function(value) {
