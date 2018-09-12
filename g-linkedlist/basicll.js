@@ -110,10 +110,26 @@ mysll.addToTail('add third one after remove');
 console.dir(mysll, {depth: null});
 
 // get value at a particular index
+SinglyLL.prototype.getValue = function(index) {
+  let counter = 0;
+  let current = this.head;
+  while (counter != index){
+    current = current.next;
+    counter++;
+  }
+  return current.value;
+};
+console.log('Linked list index 2: ', mysll.getValue(2)); // Linked list index 2: first one
 
 // remove node at a particular index
+SinglyLL.prototype.getValue = function(index) {
+  //
+};
 
 // insert node at a particular index
+SinglyLL.prototype.getValue = function(index) {
+  //
+};
 
 
 /* --------- Advance --------- */
