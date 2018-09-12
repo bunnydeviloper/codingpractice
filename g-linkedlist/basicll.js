@@ -47,8 +47,12 @@ console.dir(mysll, {depth: null});
 
 // add a node to the head of a singly linked list
 SinglyLL.prototype.addToHead = function(value) {
-  const newNode = new Node(value, null);
+  this.head = new Node(value, this.head);
 };
+
+mysll.addToHead('before first');
+mysll.addToHead('originate');
+console.dir(mysll, {depth: null});
 
 // remove a node from a singly linked list (note: there's no previous node)
 SinglyLL.prototype.remove = function(value) {
