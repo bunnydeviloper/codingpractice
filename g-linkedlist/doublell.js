@@ -1,5 +1,5 @@
 // implement double linked list
-function doubleLL() {
+function DoubleLL() {
   this.head = null;
   // this.tail = null;
 }
@@ -11,7 +11,7 @@ function Node (value, prev, next) {
   this.next = next;
 }
 
-doubleLL.prototype.push = function(value) {
+DoubleLL.prototype.push = function(value) {
   // first define the initial node as the head, current, and previous
   let head = this.head;
   let current = head;
@@ -31,3 +31,6 @@ doubleLL.prototype.push = function(value) {
     current.next = new Node(value, current, null);
   }
 };
+
+// test the push method
+const mydll = new DoubleLL();
