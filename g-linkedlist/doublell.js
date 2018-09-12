@@ -11,7 +11,8 @@ function Node (value, prev, next) {
   this.next = next;
 }
 
-DoubleLL.prototype.push = function(value) {
+// adding a node to the tail of double linked list
+DoubleLL.prototype.addToTail = function(value) {
   // first define the initial node as the head, current, and previous
   let head = this.head;
   let current = head;
@@ -32,9 +33,25 @@ DoubleLL.prototype.push = function(value) {
   }
 };
 
-// test the push method
+// test the addToTail method
 const mydll = new DoubleLL();
-mydll.push('first one');
-mydll.push('second one');
-mydll.push('third one');
+mydll.addToTail('first one');
+mydll.addToTail('second one');
+mydll.addToTail('third one');
+console.dir(mydll, {depth: null});
+
+// adding a node to the head of double linked list
+DoubleLL.prototype.addToHead = function(value) {
+  // if the head exist, then link the new node to be previous node of head
+  if (this.head) this.head.previous = new Node(value, null, this.head);
+  // if the head does not exist, then the head will be both head and tail
+  // else this.tail = new Node(value, null, this.head);
+
+  // change the new head to new node
+  this.head = new Node(value, null, this.head);
+};
+
+// test the addToHead method
+mydll.addToHead('head1 before 1st');
+mydll.addToHead('head2 before head1');
 console.dir(mydll, {depth: null});
