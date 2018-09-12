@@ -55,6 +55,7 @@ mysll.addToHead('originate');
 console.dir(mysll, {depth: null});
 
 // remove a node from a singly linked list (note: there's no previous node)
+// note: to "remove" means drop the pointer reference to the node
 SinglyLL.prototype.remove = function(value) {
   let current = this.head;
 
@@ -62,16 +63,31 @@ SinglyLL.prototype.remove = function(value) {
   if (current.value === value) {
     // case1: head is the node we're looking for, simply change the head to the next one
     this.head = current.next;
-  } else {
+  // if (this.head.value === value) {
+    // this.head = this.head.next;
+  } else if {
     let previous = current;
 
-    // case2: if the node is in the tail, then after removal, the beforeTail.next will become null
+    // case2: if the node is somewhere in middle, you have to go through each node to find it
     while (current.next) {
-      if (current.value === value) {
-        previous.next = current.next;
-        break;
+      if (current.value === value) { // base case: found the node
+        previous.next = current.next; // remove the "pointer"
+        break; // break out of while loop
       }
+      // haven't found yet, keep looping through the list
+      previous = current;
+      current = current.next;
     }
-    // case3: if the node is somewhere in middle, after removal, the middle.next will become current
+
+    // case3: we've reached the tail now, the node before current node will have .next = null
+    if (current.value === value) {
+      previous.next = null;
+    }
+  } else {
+    console.log('Cannot find node in the linked list!');
   }
 };
+
+mysll.remove('test test, should send back error');
+mysll.remove('third one');
+console.dir(mysll, {depth: null});
