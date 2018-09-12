@@ -90,9 +90,11 @@ SinglyLL.prototype.clear = function() { this.head = null; };
 
 // remove the first node (head) from a linked list
 SinglyLL.prototype.removeFirst = function() {
+  let value = this.head.value || null;
   this.head = this.head.next;
+  return value;
 };
-mysll.removeFirst();
+console.log(mysll.removeFirst()); // origin
 mysll.addToHead('add origin after remove');
 
 // remove the last node (tail) from a linked list
@@ -103,9 +105,11 @@ SinglyLL.prototype.removeLast = function() {
     previous = current;
     current = current.next;
   }
+  let value = previous.next.value || null;
   previous.next = null;
+  return value;
 };
-mysll.removeLast();
+console.log(mysll.removeLast());
 mysll.addToTail('add third one after remove');
 console.dir(mysll, {depth: null});
 
@@ -140,7 +144,7 @@ mysll.removeAt(2);
 SinglyLL.prototype.insertAt = function(index, value) {
   let counter = 0;
   let current = this.head;
-  while (counter != index) {
+  while (counter != index-1) { // if you dont wann use index-1, declare a 'previous' var
     current = current.next;
     counter++;
   }
