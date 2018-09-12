@@ -122,14 +122,32 @@ SinglyLL.prototype.getValue = function(index) {
 console.log('Linked list index 2: ', mysll.getValue(2)); // Linked list index 2: first one
 
 // remove node at a particular index
-SinglyLL.prototype.getValue = function(index) {
-  //
+SinglyLL.prototype.removeAt = function(index) {
+  let counter = 0;
+  let current = this.head;
+  let previous;
+  while (counter != index) {
+    previous = current;
+    current = current.next;
+    counter++;
+  }
+  previous.next = current.next;
 };
 
+mysll.removeAt(2);
+
 // insert node at a particular index
-SinglyLL.prototype.getValue = function(index) {
-  //
+SinglyLL.prototype.insertAt = function(index, value) {
+  let counter = 0;
+  let current = this.head;
+  while (counter != index) {
+    current = current.next;
+    counter++;
+  }
+  current.next = new Node(value, current.next);
 };
+mysll.insertAt(2, 'insert first one again');
+console.dir(mysll, {depth: null});
 
 
 /* --------- Advance --------- */
@@ -191,4 +209,4 @@ SinglyLL.prototype.remove = function(value) {
 mysll.remove('test test, should send back error');
 mysll.remove('third one');
 // mysll.remove('before first');
-console.dir(mysll, {depth: null});
+// console.dir(mysll, {depth: null});
