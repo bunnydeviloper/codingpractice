@@ -34,3 +34,7 @@ DoubleLL.prototype.push = function(value) {
 
 // test the push method
 const mydll = new DoubleLL();
+mydll.push('first one');
+mydll.push('second one');
+mydll.push('third one');
+console.dir(mydll, {depth: null});
