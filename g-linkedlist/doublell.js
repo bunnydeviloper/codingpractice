@@ -12,7 +12,7 @@ function Node (value, prev, next) {
 }
 
 /*
-// adding a node to the tail of double linked list, another way
+// adding a node to the tail of double linked list, if we set up the tail
 DoubleLL.prototype.addtoTail = function(value) {
   if (this.tail) this.tail.next = new Node(value, this.tail, null);
   else this.head = new Node(value, this.tail, null);
