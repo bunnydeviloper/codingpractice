@@ -23,14 +23,14 @@ DoubleLL.prototype.addtoTail = function(value) {
 // adding a node to the tail of double linked list
 DoubleLL.prototype.addToTail = function(value) {
   let current = this.head;
-
   if (!this.head) this.head = new Node(value, null, null);
-
-  while(current.next) {
-    current.previous = current;
-    current = current.next;
+  else {
+    while(current.next) {
+      current.previous = current;
+      current = current.next;
+    }
+    current.next = new Node(value, current, null);
   }
-  current.next = new Node(value, current, null);
 
   /* more detailed answer
   // first define the initial node as the head, current, and previous
@@ -43,7 +43,6 @@ DoubleLL.prototype.addToTail = function(value) {
     this.head = new Node(value, null, null);
   } else {
     // else, walk the linked list until you reach the end
-    /*
     while (current && current.next) { // ???: do you nead to check if current exist?...
       // 1st: assign the current to be previous
       previous = current;
