@@ -17,6 +17,7 @@ const testData = {
     "Madonna",
     "Beyonce",
     "Lady Gaga",
+    "Lady Gaga",
     "Katy Perry"
   ]
 };
@@ -40,17 +41,19 @@ function mostCommonNumber (numbers) {
     } else {
       acc[curr] = 1;
     }
-
     return acc;
   }, {});
   console.log('this is counted', counted);
 
-  let keys = Objects.keys(counted);
-  let maxKey = Object.keys(counted).reduce((a, b) => counted[a] > counted[b] ? a : b);
-  return maxKey;
+  let maxValue = Math.max(...Object.values(counted));
+  let maxKey = Object.keys(counted).reduce((a, b) => (counted[a] > counted[b]) ? a : b );
+  console.log('maxKey ', maxKey, ' and maxValue ', maxValue);
+
+  return (maxValue === 1) ? -1 : maxKey;
 }
 
 console.log(mostCommonNumber([[2, 3, 4], [5, 4, 8], [2, 2, 2]])); // 2
+console.log(mostCommonNumber([1, 2, 3, 4, 5])); // -1, means there's no common numbers
 
 // function to find the most common ASCII value of data
 function commonASCII (data) {
