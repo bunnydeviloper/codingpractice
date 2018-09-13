@@ -16,3 +16,11 @@ function BST() {
 BST.prototype.push = function(value) {
   const root = this.root;
 }
+
+const testBst = new BST();
+testBst.push(4);
+testBst.push(2);
+testBst.push(9);
+testBst.push(7);
+testBst.push(5);
+testBst.push(0);
