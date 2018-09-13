@@ -10,6 +10,11 @@ function sockMerchants(n, arr) {
     return accum;
   }, {});
   console.log(obj);
+  let totalPairs = 0;
+  Object.values(obj).map(e => {
+    totalPairs = totalPairs + Math.floor(e/2);
+  });
+  return totalPairs;
 }
 
 console.log(sockMerchants(length, testData));
