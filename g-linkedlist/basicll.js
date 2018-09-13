@@ -153,6 +153,20 @@ SinglyLL.prototype.insertAt = function(index, value) {
 mysll.insertAt(2, 'insert first one again');
 console.dir(mysll, {depth: null});
 
+// search for a node to see if it exist in the linked list
+SinglyLL.prototype.search = function(value) {
+  let current = this.head;
+  while (current) {
+    // if (current.value === value) return current;
+    if (current.value === value) return true;
+    current = current.next;
+  }
+  // return null;
+  return false;
+};
+console.log(mysll.search('first one')); // false
+console.log(mysll.search('second one')); // true
+
 
 /* --------- Advance --------- */
 
