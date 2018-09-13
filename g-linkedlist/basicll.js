@@ -183,25 +183,24 @@ SinglyLL.prototype.remove = function(value) {
   } else {
     let previous = current;
 
-    /*
-    while (current.next) {
-      if (current.next.value === value) {
-        console.log('Found it, node is somewhere in the middle of LL');
-        previous.next = current.next.next;
-        break;
+    while (current) {
+      if (current.value === value) {
+        if (current.next != null) {
+          console.log('Found it, node is somewhere in the middle of LL');
+          break;
+        } else {
+          console.log('Found it, node is at the tail of LL');
+          break;
+        }
       }
-      current = current.next;
       previous = current;
+      current = current.next;
     }
-    if (current.value === value) {
-      console.log('Found it, node is at the tail of LL');
-      previous.next = null;
-    }
-    if (!current.next) console.log('Reached the end, cannot find node in the linked list!');
-    */
+    if (current === null) return console.log('Reached the end, cannot find node in the linked list!');
+    previous.next = current.next;
 
     /*
-    // case2: if the node is somewhere in middle, you have to go through each node to find it
+      // case2: if the node is somewhere in middle, you have to go through each node to find it
     while (current.next) {
       if (current.value === value) { // base case: found the node
         previous.next = current.next; // remove the "pointer"
@@ -224,7 +223,8 @@ SinglyLL.prototype.remove = function(value) {
   }
 };
 
-mysll.remove('test test, should send back error');
-mysll.remove('third one');
-// mysll.remove('before first');
-// console.dir(mysll, {depth: null});
+// mysll.remove('add origin after remove'); // remove Head
+// mysll.remove('before first'); // remove middle
+mysll.remove('add third one after remove'); // remove Tail
+// mysll.remove('test test, should send back error');
+console.dir(mysll, {depth: null});
