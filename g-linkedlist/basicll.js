@@ -183,48 +183,29 @@ SinglyLL.prototype.remove = function(value) {
   } else {
     let previous = current;
 
+    // case2: if the node is somewhere from the middle till the end
     while (current) {
       if (current.value === value) {
-        if (current.next != null) {
+        if (current.next != null) { // if not the end
           console.log('Found it, node is somewhere in the middle of LL');
-          break;
+          break; // break out of while loop
         } else {
           console.log('Found it, node is at the tail of LL');
-          break;
+          break; // break out of while loop
         }
-      }
-      previous = current;
-      current = current.next;
-    }
-    if (current === null) return console.log('Reached the end, cannot find node in the linked list!');
-    previous.next = current.next;
-
-    /*
-      // case2: if the node is somewhere in middle, you have to go through each node to find it
-    while (current.next) {
-      if (current.value === value) { // base case: found the node
-        previous.next = current.next; // remove the "pointer"
-        console.log('Found it, node is somewhere in the middle of LL');
-        break; // break out of while loop
       }
       // haven't found yet, keep looping through the list
       previous = current;
       current = current.next;
     }
-
-    // case3: we've reached the tail now, the node before current node will have .next = null
-    if (current.value === value) {
-      previous.next = null;
-      console.log('Found it, node is at the tail of LL');
-    } else {
-      console.log('Reached the end, cannot find node in the linked list!');
-    }
-    */
+    if (current === null) return console.log('Reached the end, cannot find node in linked list!');
+    // we have found the node, now remove the pointer
+    previous.next = current.next;
   }
 };
 
-// mysll.remove('add origin after remove'); // remove Head
-// mysll.remove('before first'); // remove middle
+mysll.remove('add origin after remove'); // remove Head
+mysll.remove('second one'); // remove middle
 mysll.remove('add third one after remove'); // remove Tail
-// mysll.remove('test test, should send back error');
+mysll.remove('test test, should send back error');
 console.dir(mysll, {depth: null});
