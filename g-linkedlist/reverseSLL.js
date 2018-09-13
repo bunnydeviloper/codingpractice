@@ -15,17 +15,23 @@ function reverseSLL (sll) {
   if (!sll.head || !sll.head.next) return sll;
 
   // else, keep reversing pointers of two nodes at a time
-  let curr = sll.head;
-  let prev = new LinkedList();
+  // let curr = sll.head;
+  // let prev = new LinkedList();
+  let prev = sll.head;
+  let curr = prev.next;
 
   while (curr) {
-    let save = curr.next; // save the next node
-    curr.next = prev; // reverse pointer
+    let temp = curr.next; // save the next node
+    curr.next = prev;
+    prev = curr;
+    curr = temp;
+    // curr.next = prev; // reverse pointer
 
-    prev.next = curr; // increment previous to current node
-    curr.next = save; // increment current to the saved node above and repeat (or null if at the end)
+    // prev.head = curr; // increment previous to current node
+    // curr.next = save; // increment current to the saved node above and repeat (or null if at the end)
   }
-  return prev;
+  sll.head = prev;
+  return sll;
 }
 
 const mysll = new LinkedList();
