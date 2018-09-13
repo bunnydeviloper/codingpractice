@@ -15,9 +15,7 @@ function reverseSLL (sll) {
   if (!sll.head || !sll.head.next) return sll;
 
   // else, keep reversing pointers of two nodes at a time
-  // let curr = sll.head;
-  let prev = new LinkedList();
-  // let prev = sll.head;
+  let prev = sll.head;
   let curr = prev.next;
 
   while (curr) {
