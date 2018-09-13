@@ -32,8 +32,9 @@ function getASCII (string) {
 console.log(getASCII('DISNEY')); // 460
 
 // function to find the most common value of an array
-function mostCommonNumber (array) {
-  let counted = numbers.reduce((acc, curr) => { 
+function mostCommonNumber (numbers) {
+  numbers = [].concat(...numbers);
+  let counted = numbers.reduce((acc, curr) => {
     if (curr in acc) {
       acc[curr]++;
     } else {
@@ -42,19 +43,22 @@ function mostCommonNumber (array) {
 
     return acc;
   }, {});
+  console.log('this is counted', counted);
 
-  let mode = Object.keys(counted).reduce((a, b) => counted[a] > counted[b] ? a : b);
-
-  return mode;
+  let keys = Objects.keys(counted);
+  let maxKey = Object.keys(counted).reduce((a, b) => counted[a] > counted[b] ? a : b);
+  return maxKey;
 }
 
-console.log(mostCommonNumber([[2, 3, 4], [5, 4, 8], [2, 2, 2]]); // 2
+console.log(mostCommonNumber([[2, 3, 4], [5, 4, 8], [2, 2, 2]])); // 2
 
-  // function to find the most common ASCII value of data
-  function commonASCII (data) {
-    let mostCommonASCII = -1;
-    //
-    return mostCommonASCII;
-  }
+// function to find the most common ASCII value of data
+function commonASCII (data) {
+  let mostCommonASCII = -1;
+  let allArtists = [].concat(...Object.values(data));
+  let allScores = allArtists.map(e => getASCII(e));
+  console.log(allScores);
+  return mostCommonNumber(allScores) || mostCommonASCII;
+}
 
-  console.log(commonASCII(testData));
+console.log(commonASCII(testData));
