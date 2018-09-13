@@ -36,7 +36,8 @@ console.log(getASCII('DISNEY')); // 460
 function mostCommonNumber (numbers) {
   numbers = [].concat(...numbers);
   let counted = numbers.reduce((acc, curr) => {
-    if (curr in acc) {
+    // if (curr in acc) {
+    if (acc[curr]) {
       acc[curr]++;
     } else {
       acc[curr] = 1;
