@@ -14,6 +14,7 @@ console.log(repeatedString("abcda", 10)); // 3
 console.log(repeatedString("aba", 10)); // 7
 
 // as n gets very large (10^12), we will encounter error, so there's a more optimized version
+// note: from my understanding, this version is still O(n), but it depends on the size of s instead of n
 function countA(s) {
   let array = s.split("");
   let count = 0;
@@ -21,7 +22,6 @@ function countA(s) {
   return count;
 }
 function repeatedString2(s, n) {
-  if (s === "a") return n;
   let counter = 0;
   let repeat = Math.floor(n / s.length);
   let remain = n % s.length;
