@@ -17,3 +17,6 @@ function findLonelyNumber (a) {
 
 console.log(findLonelyNumber([2, 6, 3, 8, 6, 2, 3])); // 8
 console.log(findLonelyNumber([-1, -1, 0, 1, 1, 1])); // 0
+
+// time: O(n)
+// space: O(n)
