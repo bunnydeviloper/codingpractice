@@ -21,7 +21,9 @@ function twoSum2(array, target) {
 
   for (let i=0; i < array.length; i++) {
     for (let j=i+1; j < array.length; j++) {
-      if (array[j] === target - array[i]) result.push([array[i], array[j]]);
+      if (array[j] === target - array[i]) {
+        result.push([array[i], array[j]]);
+      }
     }
   }
   return result;
@@ -33,8 +35,8 @@ console.log(twoSum2([7, 0, -4, 5, 2, 3], 5)); // [[0, 5], [2, 3]]
 // use sort() and binary search
 const binarySearch = (sortedArr, target) => {
   let min = 0,
-      max = sortedArr.length - 1,
-      guess;
+    max = sortedArr.length - 1,
+    guess;
 
   while (min <= max) {
     guess = Math.floor((min + max) / 2);
@@ -54,11 +56,11 @@ const binarySearch = (sortedArr, target) => {
 // O(n log n) time
 const twoSumBinary = (arr, target) => {
   let sortedArr = arr.sort(),
-      results = [];
+    results = [];
 
   for (let i=0; i<sortedArr.length; i++) {
     let diff = target - sortedArr[i],
-        binaryIndex = binarySearch(sortedArr, diff);
+      binaryIndex = binarySearch(sortedArr, diff);
     if (binaryIndex) {
       results.push([sortedArr[i], sortedArr[binaryIndex]]);
     }
