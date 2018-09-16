@@ -29,3 +29,41 @@ function twoSum2(array, target) {
 // time: O(n^2)
 // space: ?
 console.log(twoSum2([7, 0, -4, 5, 2, 3], 5)); // [[0, 5], [2, 3]]
+
+// use sort() and binary search
+const binarySearch = (sortedArr, target) => {
+  let min = 0,
+      max = sortedArr.length - 1,
+      guess;
+
+  while (min <= max) {
+    guess = Math.floor((min + max) / 2);
+
+    if (sortedArr[guess] === target) {
+      return guess;
+    } else {
+      if (sortedArr[guess] < target) {
+        min = guess + 1;
+      } else {
+        max = guess - 1;
+      }
+    }
+  }
+  return false;
+}
+// O(n log n) time
+const twoSumBinary = (arr, target) => {
+  let sortedArr = arr.sort(),
+      results = [];
+
+  for (let i=0; i<sortedArr.length; i++) {
+    let diff = target - sortedArr[i],
+        binaryIndex = binarySearch(sortedArr, diff);
+    if (binaryIndex) {
+      results.push([sortedArr[i], sortedArr[binaryIndex]]);
+    }
+  }
+  return results;
+}
+
+console.log(twoSumBinary([7, 0, -4, 5, 2, 3], 5)); // [[0,5], [2,3], [3,2], [5,0]]
