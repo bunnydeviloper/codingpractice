@@ -2,8 +2,8 @@
 // same as: determin of string A can be formed by rearranging the letters of string B
 
 const testA = "abcdefg"
-const testB = "yummy"
-const testC = "umymy"
+const testB = "yummy #01"
+const testC = "umymy #10"
 
 // use array
 const are_anagrams = (s1, s2) => {
@@ -17,7 +17,7 @@ const are_anagrams = (s1, s2) => {
       tempS2 = tempS2.filter(e => e !== curr);
     }
   });
-  return tempS2.length === 0;
+  return tempS2.length === 0; // if all char matches, the length of temp array should be 0
 };
 
 // time: O(n)
