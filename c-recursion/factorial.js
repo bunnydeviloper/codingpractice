@@ -4,8 +4,7 @@ const factorial = (n, list={}) => {
     return 1;
   }
   list[n] = n * factorial(n-1, list);
-  // console.log(list);
-  return n * factorial(n-1, list);
+  return list[n];
 };
 
 console.log('factorial of 4 is ', factorial(4));
