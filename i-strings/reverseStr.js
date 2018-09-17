@@ -1,18 +1,35 @@
 // Reverse a given string, simple for loop, using a temporary string
 const reverseStr = (s) => {
   let newS = "";
-  for (let i=0; i < s.length; i++) {
-    newS = newS + s.charAt(s.length - 1 - i);
+  // each iteration, you add the last letter of original string to newS
+  for (let i=1; i < s.length + 1; i++) {
+    newS += s.charAt(s.length - i);
   }
   return newS;
 };
 
+/*
+// using recursion
+const reverseStr = (s, temp = "", i = 1) => {
+  if (i === s.length + 1) return temp;
+  temp = temp + s.charAt(s.length - i);
+  return reverseStr(s, temp, i+1);
+};
+*/
+
 // time: O(n)
 // space: O(n)
 
-const test2 = "@@@ Code On @@@";
 const test = ".tIpoleveDlriG ot kn!L a si sihT";
-console.log(reverseStr(test2)); // @@@ nO edoC @@@
+const test2 = "@@@ Code On @@@";
 console.log(reverseStr(test)); // This is a L!nk to GirlDevelopIt.
+console.log(reverseStr(test2)); // @@@ nO edoC @@@
 
 // More advance: reverse a string "in place", without creating a new string in memory
+const reverseStrInPlace = (s) => {
+  // split each char to an array, use reverse() built-in array method, and join them back together
+  return s.split("").reverse().join("");
+};
+
+console.log(reverseStrInPlace(test));
+console.log(reverseStrInPlace(test2));
