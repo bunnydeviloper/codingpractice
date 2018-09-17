@@ -44,3 +44,35 @@ function nth_node_from_end (ll, n) {
 console.log(nth_node_from_end(mysll2)); // "Invalid Linked List"
 console.log(nth_node_from_end(mysll3)); // "Linked List has only 1 head node"
 console.log(nth_node_from_end(mysll)); // Node {value: 4, next: Node {value: 5, next: null}}
+
+function nth_from_end (linkedlist, n) {
+  let counter = 0;
+  if (!linkedlist.head) {
+    return "Invalid Linked List";
+  } else {
+    let current = linkedlist.head;
+
+    // first count the length of the linked list, find out where we should stop for the nth node
+    while (current) {
+      counter++;
+      current = current.next;
+    }
+    if (counter === 1) return "Linked List only has one head node";
+    if (n > counter) return "Invalid number";
+
+    // second, return the nth node from the end of the linked list
+    let node_to_stop = counter - n;
+    counter = 0; // reset counter
+    current = linkedlist.head; // reset current
+    while (counter < node_to_stop) {
+      counter++;
+      current = current.next;
+    }
+    return current;
+  }
+}
+
+console.log(nth_from_end(mysll2, 0)); // "Invalid Linked List"
+console.log(nth_from_end(mysll3, 0)); // "Linked List has only 1 head node"
+console.log(nth_from_end(mysll, 7)); // "Invalid number"
+console.log(nth_from_end(mysll, 2)); // Node {value: 4, next: Node {value: 5, next: null}}
