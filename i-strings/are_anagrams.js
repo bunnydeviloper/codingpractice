@@ -32,7 +32,7 @@ const are_anagrams2 = (s1, s2) => {
 
   let obj = {};
 
-  // first loop through string1 and add each character to object and increase its occurance number
+  // first loop through string1, add each character to object and increase its occurance number
   for (let i = 0; i < s1.length; i++ ) {
     if (!obj[s1.charAt(i)]) obj[s1.charAt(i)] = 1;
     else obj[s1.charAt(i)]++;
