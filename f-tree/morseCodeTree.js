@@ -41,9 +41,22 @@ morseCode.root = new Node("start", E, T);
 // translate(["....", ".", ".-..", ".-..", "---"]); // hello
 function translate(array, tree = morseCode) {
   let message = "";
-  if (array.length === 0) return "There's no current message";
-  // return message;
+  if (array.length === 0) return "There's no current message.";
+
+  // loop through each element of the array and find out the corresponding character
+  array.map(letter => {
+    let current = tree.root;
+    for (let i=0; i < letter.length; i++) {
+      if (letter.charAt(i) === "." && current.left) current = current.left;
+      if (letter.charAt(i) === "-" && current.right) current = current.right;
+    }
+    message += current.value;
+  });
+  return message;
 }
 
-translate(["....", ".", ".-..", ".-..", "---"]); // hello
-translate([]); // There's no current message
+const message = ["....", ".", ".-..", ".-..", "---"];
+console.log(translate(message)); // HELLO
+console.log(translate([])); // There's no current message
+console.log(translate(["..---", ".-.-.", "--...", "-...-", "----."])); // 2 + 7 = 9
+console.log(translate([".-..", ".-....", ".-..--"])); // L, left of L: null -> L, same as right side
