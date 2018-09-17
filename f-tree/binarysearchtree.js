@@ -38,6 +38,41 @@ testBst.push(4);
 testBst.push(2);
 testBst.push(9);
 testBst.push(7);
+testBst.push(1);
+testBst.push(10);
 testBst.push(5);
 testBst.push(0);
-console.dir(testBst, {depth: null});
+// console.dir(testBst, {depth: null});
+
+// Depth first search for BST ( pre-order traversal)
+console.log('start dfs...');
+function dfs(node) {
+  if (node) {
+    console.log(node.value);
+    dfs(node.left);
+    dfs(node.right);
+  }
+}
+dfs(testBst.root); // 4 2 1 0 9 7 5 10
+
+// Breadth first search from bottom for BST (post-order traversal)
+console.log('starting postOrder...');
+function postOrder(node) {
+  if (node) {
+    postOrder(node.left);
+    postOrder(node.right);
+    console.log(node.value);
+  }
+}
+postOrder(testBst.root); // 0 1 2 5 7 10 9 4
+
+// In order traversal for BST
+console.log('starting inOrder...');
+function inOrder(node) {
+  if (node) {
+    inOrder(node.left);
+    console.log(node.value);
+    inOrder(node.right);
+  }
+}
+inOrder(testBst.root); // 0 1, 2, 4 5 7 9 10
