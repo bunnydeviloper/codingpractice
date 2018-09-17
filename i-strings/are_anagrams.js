@@ -8,14 +8,20 @@ const testC = "umymy"
 // use array
 const are_anagrams = (s1, s2) => {
   if (s1.length !== s2.length) return false;
+
   let tempS2 = s2.split(""); // create temporary array for string2
-  s1.split("").map(curr => { // create array for string1 and map through each item
-    if (tempS2.includes(curr)) { // if current char in S1 matches any of the characters in S2
-      tempS2 = tempS2.filter(e => e !== curr); // then remove that char from S2
+
+  // loop through S1, if current char in s1 matches any char in S2, then remove that from S2
+  s1.split("").map(curr => {
+    if (tempS2.includes(curr)) {
+      tempS2 = tempS2.filter(e => e !== curr);
     }
   });
-  return (tempS2.length === 0) ? true : false;
+  return tempS2.length === 0;
 };
+
+// time: O(n)
+// space: O(n)
 
 console.log(are_anagrams(testA, testB)); // false
 console.log(are_anagrams(testB, testC)); // true
@@ -25,13 +31,14 @@ const are_anagrams2 = (s1, s2) => {
   if (s1.length !== s2.length) return false;
 
   let obj = {};
-  // first loop through string1 and add each character to object with its occurance
+
+  // first loop through string1 and add each character to object and increase its occurance number
   for (let i = 0; i < s1.length; i++ ) {
     if (!obj[s1.charAt(i)]) obj[s1.charAt(i)] = 1;
     else obj[s1.charAt(i)]++;
   }
 
-  // second, loop through string2, check each character agains the occurance in obj
+  // second, loop through string2, check each character agains our obj, and reduce occurance number
   for (let i = 0; i < s2.length; i++) {
     if (!obj[s2.charAt(i)]) return false;
     else obj[s2.charAt(i)]--;
