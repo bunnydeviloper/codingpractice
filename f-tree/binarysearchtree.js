@@ -20,11 +20,15 @@ BST.prototype.push = function(value) {
   let current = this.root;
   while(current) {
     if (value < current.value) {
-      if (!current.left) current.left = newNode;
-      else current = current.left;
+      if (!current.left) {
+        current.left = newNode;
+        break;
+      } else current = current.left;
     } else {
-      if (!current.right) current.right = newNode;
-      else current = current.right;
+      if (!current.right) {
+        current.right = newNode;
+        break;
+      } else current = current.right;
     }
   }
 }
