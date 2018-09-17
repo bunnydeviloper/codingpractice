@@ -76,3 +76,23 @@ function inOrder(node) {
   }
 }
 inOrder(testBst.root); // 0 1, 2, 4 5 7 9 10
+
+// find min value in a bst, just recurse until you reach the left-most node
+function minValue (node) {
+  if (!node) return 0;
+  if (node.left) {
+    return minValue(node.left);
+  }
+  return node.value;
+}
+console.log('min Value is: ', minValue(testBst.root)); // 0
+
+// find max value of bst, just recurse until you reach the right-most node
+function maxValue (node) {
+  if (!node) return 0;
+  if (node.right) {
+    return maxValue(node.right);
+  }
+  return node.value;
+}
+console.log('max Value is: ', maxValue(testBst.root)); // 10
