@@ -55,8 +55,11 @@ function translate(array, tree = morseCode) {
   return message;
 }
 
+// time: O(2n) => O(n), note: time for inner for loop is O(5) b/c max depth of morse code tree is 5 levels
+// space: O(n)
+
 const message = ["....", ".", ".-..", ".-..", "---"];
 console.log(translate(message)); // HELLO
 console.log(translate([])); // There's no current message
 console.log(translate(["..---", ".-.-.", "--...", "-...-", "----."])); // 2 + 7 = 9
-console.log(translate([".-..", ".-....", ".-..--"])); // L, left of L: null -> L, same as right side
+console.log(translate([".-..", ".-....", ".-..--"])); // L, left of L: null -> return L, right of L: null -> return L
