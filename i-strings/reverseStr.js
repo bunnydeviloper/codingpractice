@@ -8,15 +8,6 @@ const reverseStr = (s) => {
   return newS;
 };
 
-/*
-// using recursion
-const reverseStr = (s, temp = "", i = 1) => {
-  if (i === s.length + 1) return temp;
-  temp = temp + s.charAt(s.length - i);
-  return reverseStr(s, temp, i+1);
-};
-*/
-
 // time: O(n)
 // space: O(n)
 
@@ -33,3 +24,12 @@ const reverseStrInPlace = (s) => {
 
 console.log(reverseStrInPlace(test));
 console.log(reverseStrInPlace(test2));
+
+// Use recursion
+const reverseStrRecurse = (s) => {
+  return (s === "") ? "" : reverseStrRecurse(s.substring(1)) + s.charAt(0);
+};
+
+console.log(reverseStrRecurse(test));
+console.log(reverseStrRecurse(test2));
+
