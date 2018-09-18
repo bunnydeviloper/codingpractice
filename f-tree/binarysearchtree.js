@@ -75,7 +75,7 @@ function inOrder(node) {
     inOrder(node.right);
   }
 }
-inOrder(testBst.root); // 0 1, 2, 4 5 7 9 10
+inOrder(testBst.root); // 0 1 2 4 5 7 9 10
 
 // find min value in a bst, just recurse until you reach the left-most node
 function minValue (node) {
@@ -96,3 +96,26 @@ function maxValue (node) {
   return node.value;
 }
 console.log('max Value is: ', maxValue(testBst.root)); // 10
+
+// write a function to find out if a value present in BST or not
+function is_present (value, node) {
+  if (!node) return false;
+  else if (node.value < value) return is_present(value, node.right);
+  else if (node.value > value) return is_present(value, node.left);
+  else return true;
+
+  /*
+  if (!node) {
+    return false;
+  } else if (node.value < value) {
+    return is_present(value, node.right);
+  } else if (node.value > value) {
+    return is_present(value, node.left);
+  } else {
+    return true;
+  }
+  */
+}
+
+console.log(is_present(20, testBst.root)); // false
+console.log(is_present(2, testBst.root)); // true
