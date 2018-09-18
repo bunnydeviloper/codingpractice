@@ -19,7 +19,9 @@ BST.prototype.push = function(value) {
 
   let current = this.root;
   while(current) {
-    if (value < current.value) {
+    if (value === current.value) {
+      break;
+    } else if (value < current.value) {
       if (!current.left) {
         current.left = newNode;
         break;
@@ -36,13 +38,14 @@ BST.prototype.push = function(value) {
 const testBst = new BST();
 testBst.push(4);
 testBst.push(2);
+testBst.push(2); // should be ignore b/c duplicate value
 testBst.push(9);
 testBst.push(7);
 testBst.push(1);
 testBst.push(10);
 testBst.push(5);
 testBst.push(0);
-// console.dir(testBst, {depth: null});
+console.dir(testBst, {depth: null});
 
 // Depth first search for BST ( pre-order traversal)
 console.log('start dfs...');
