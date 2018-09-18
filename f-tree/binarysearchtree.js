@@ -137,6 +137,7 @@ function maxDepthTree (node, maxDepth = 0) {
     maxLeft = maxDepthTree(node.left, maxDepth++);
     maxRight = maxDepthTree(node.right, maxDepth++);
     console.log(maxLeft, maxRight);
+    // TODO: something is wrong here...
     return Math.max(maxLeft, maxRight);
   }
 }
