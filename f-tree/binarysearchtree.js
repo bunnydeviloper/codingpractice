@@ -124,31 +124,22 @@ console.log(is_present(20, testBst.root)); // false
 console.log(is_present(2, testBst.root)); // true
 
 // write a function to find max depth of a binary tree
-function maxDepthTree (node, maxDepth = 0) {
+function maxDepthTree (node) {
   if (!node) return 0;
-  if (!node.left && !node.right) return maxDepth;
-  else if (node.left && !node.right) {
-    return maxDepthTree(node.left, maxDepth++);
-  }
-  else if (!node.left && node.right) {
-    return maxDepthTree(node.right, maxDepth++);
-  }
-  else {
-    maxLeft = maxDepthTree(node.left, maxDepth++);
-    maxRight = maxDepthTree(node.right, maxDepth++);
-    console.log(maxLeft, maxRight);
-    // TODO: something is wrong here...
-    return Math.max(maxLeft, maxRight);
-  }
+  let maxLeft = maxDepthTree(node.left);
+  let maxRight = maxDepthTree(node.right);
+  return Math.max(maxLeft, maxRight) + 1; // make sure to + 1
 }
 // console.dir(testBst, {depth: null});
-console.log(maxDepthTree(testBst.root)); // 3
+console.log(maxDepthTree(testBst.root)); // 4
 
 const test2 = new BST();
-// console.log(maxDepthTree(test2.root)); // 0
+console.log(maxDepthTree(test2.root)); // 0
 test2.push(9);
 test2.push(4);
-// console.log(maxDepthTree(test2.root)); // 1
+console.log(maxDepthTree(test2.root)); // 2
 test2.push(11);
 // console.dir(test2, {depth: null});
-// console.log(maxDepthTree(test2.root)); // should still be 1
+console.log(maxDepthTree(test2.root)); // should still be 2
+test2.push(7);
+console.log(maxDepthTree(test2.root)); // 3
