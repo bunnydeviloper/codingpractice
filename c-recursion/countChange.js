@@ -1,19 +1,20 @@
 // given coins {50, 25, 10, 5, 1}, how many ways are there of making changes
 
 
-// calculate the number of ways of represent n in a sum of k(s) integers
+// calculate the number of ways to represent n as a sum of multiple integers from a list
+// note: n is an integer >= 1, coinsArray is a list containing integers >= 1, list doesn't have to be sorted
 function splitSum(total, coinsArray) {
+  if (coinsArray.length === 0 || total < 0) return 0;
   if (total === 0) return 1;
-  // if (total < coinsArray[0] || coinsArray.length === 0) return 0;
-  console.log('coins array ', coinsArray);
-  if (coinsArray.length === 0 || total < coinsArray[0]) return 0;
-  return splitSum(total - coinsArray[0], coinsArray) + splitSum(total, coinsArray.splice(0, 1));
+  return splitSum(total - coinsArray[0], coinsArray) + splitSum(total, coinsArray.slice(1));
 }
 
-console.log(splitSum(8, [1, 3, 5])); // 8 (ways)
+console.log(splitSum(8, [5, 1, 3])); // 5 (ways)
 console.log(splitSum(10, [2, 5])); // 2 (ways)
-console.log(splitSum(0, [2, 5])); // 0 (ways)
-console.log(splitSum(10, [])); // 0 (ways)
+console.log(splitSum(10, [])); // 0 (way)
+console.log(splitSum(10, [15, 20])); // 0 (way)
+
+console.log(splitSum(0, [2, 5])); // should be 0 (way) but showing 1 (way)
 
 /*
 const countChange = (amount, list) => {
