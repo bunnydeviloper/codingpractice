@@ -72,3 +72,12 @@ Graph.prototype.dfsUtils = function(vertex, visited, str) {
 };
 
 graph.dfs();
+
+// Modify DFS to check whether our graph is cyclic or acylic (detecting cycles)
+Graph.prototype.detectCycle = function() {
+  //
+};
+
+Graph.prototype.detectCycleUtils = function() {
+  //
+};
