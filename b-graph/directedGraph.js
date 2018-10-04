@@ -75,9 +75,19 @@ graph.dfs();
 
 // Modify DFS to check whether our graph is cyclic or acylic (detecting cycles)
 Graph.prototype.detectCycle = function() {
+  const nodes = Object.keys(this.adjList);
+  const visited = {};
+  const recStack = {};
+
+  nodes.forEach(node => {
+    if (this.detectCycleUtils(node, visited, recStack)) return 'There is a cycle!';
+  });
+
+  return 'No cycle detected';
+};
+
+Graph.prototype.detectCycleUtils = function(vertex, visited, recStack) {
   //
 };
 
-Graph.prototype.detectCycleUtils = function() {
-  //
-};
+graph.detectCycle();
