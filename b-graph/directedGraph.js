@@ -41,12 +41,15 @@ Graph.prototype.dfs = function() {
   // loop through array of nodes and call dfsUtils function (below) on each node
   for (let i = 0; i < nodes.length; i++) {
     const node = nodes[i];
+
+    let str = node;
+
     console.log('Each node: ', node);
-    this.dfsUtils(node, visited);
+    this.dfsUtils(node, visited, str);
   }
 };
 
-Graph.prototype.dfsUtils = function(vertex, visited) {
+Graph.prototype.dfsUtils = function(vertex, visited, str) {
   // only perform the function on new vertex (un-visited)
   if (!visited[vertex]) {
     visited[vertex] = true;
@@ -57,8 +60,13 @@ Graph.prototype.dfsUtils = function(vertex, visited) {
     console.log('current vertex(node): ', vertex, ' and its neighbors are: ', neighbors);
     for (let i = 0; i < neighbors.length; i++) {
       const neighbor = neighbors[i];
+
+      // this string will list the order of dfs traversal
+      str = str + neighbor;
+      console.log(str);
+
       console.log('calling dfsUtils on neighbor: ', neighbor);
-      this.dfsUtils(neighbor, visited);
+      this.dfsUtils(neighbor, visited, str);
     }
   }
 };
