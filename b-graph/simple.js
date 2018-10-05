@@ -2,16 +2,20 @@
 
 let MakeGraph = () => {
   let graph = {};
+
+  // contains method has a time complexity of O(1), maybe don't really need this method...
   graph.contains = (node)=> {
     return !!graph[node];
   }
 
+  // addVertex (node) has a time complexity of O(1)
   graph.addVertex = (node) => {
     if(!graph.contains(node)){
       graph[node] = {edges:{}};
     }
   }
 
+  // removeVertex (node) has a time complexity of O(n), with n = number of edges
   graph.removeVertex = (node) => {
     if(graph.contains(node)) {
     // We need to remove any existing edges the node has
@@ -22,6 +26,7 @@ let MakeGraph = () => {
     }
   }
 
+  // addEdge has a time complexity of O(1)
   graph.addEdge = (startNode, endNode) => {
     if(graph.contains(startNode) && graph.contains(endNode)){
       graph[startNode].edges[endNode] = true;
@@ -29,6 +34,7 @@ let MakeGraph = () => {
     }
   }
 
+  // removeEdge has a time complexity of O(1)
   graph.removeEdge = (startNode, endNode) => {
     if(graph.contains(startNode) && graph.contains(endNode)){
       delete graph[startNode].edges[endNode]
