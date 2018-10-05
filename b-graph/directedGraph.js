@@ -93,6 +93,7 @@ Graph.prototype.detectCycleUtils = function(vertex, visited, recursionStack) {
     visited[vertex] = true;
     recursionStack[vertex] = true;
     const neighbors = this.adjList[vertex];
+    console.log('visited: ', visited, ' and recStack: ', recursionStack);
     for (let i = 0; i < neighbors.length; i++) {
       const node = neighbors[i];
       console.log('parent: ', vertex, ' and child: ', node);
@@ -127,7 +128,7 @@ console.log('================================================');
 graph.addEdge('E', 'A');
 console.log(graph.detectCycle()); // There is a cycle!
 
-/*
+console.log('================================================');
 const graph2 = new Graph();
 graph2.addVertex('A');
 graph2.addVertex('B');
@@ -138,4 +139,3 @@ graph2.addEdge('C', 'A');
 console.log(graph2);
 
 console.log(graph2.detectCycle()); // There is a cycle!
-*/
