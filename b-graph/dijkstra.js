@@ -10,9 +10,21 @@ const myGraph = {
 };
 
 // function to return the cheapest node that hasn't been processed
-const lowestCostNode = (cost, processed) => {
-  //
+const lowestCostNode = (costs, processed) => {
+  return Object.keys(costs).reduce((lowest, node) => {
+    if (lowest === null || costs[node] < costs[lowest]) {
+      if (!processed.includes(node)) lowest = node;
+    }
+    return lowest;
+  }, null);
+
+  // 2nd way to write, but this will NOT work in the case if we visited the node already
+  // return Object.keys(costs).filter(e => {
+  //   return (!processed.includes(e)) && costs[e] === Math.min(...Object.values(costs));
+  // })[0];
 };
+
+// console.log(lowestCostNode({A:5, B:2, finish:Infinity}, [])); // B
 
 const dijkstra = (graph) => {
   // initialize some variables
