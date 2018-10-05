@@ -44,21 +44,25 @@ const dijkstra = (graph) => {
   const processed = []; // example: processed = ["start", "A", "B"]
 
   // ------ calculate the lowest cost node -------
-  const node = lowestCostNode(costs, processed);
+  let node = lowestCostNode(costs, processed);
   while (node) {
-    const cost = costs[node]; // get cost of current node, which is "B"
+    console.log('CURRENT NODE (parent): ', node, 'costs: ', costs, 'parents: ', parents, 'processed: ', processed);
+    let cost = costs[node]; // get cost of current node (current node is "B", cost is 2)
 
-    const children = graph[node]; // get all "neighbors" of current node, thus children = { A:8, D:7 };
+    let children = graph[node]; // get all "neighbors" of current node (children = { A:8, D:7 })
 
     for (let n in children) {
       let newCost = cost + children[n];
 
-      if (!costs[n] || (costs[n] > newCost)) {
-        costs[n] = newCost;
+      if (!costs[n] || (newCost < costs[n])) {
+        console.log('CURRENT N (children): ', n, 'COSTS[N]: ', costs[n], 'NEWCOST: ', newCost);
+        costs[n] = newCost; // newCost is lower, reassign newCost to current cost
         parents[n] = node;
       }
     }
     processed.push(node); // once done, push node to processed array
-    node = lowestCostNode(costs, processed); // reset the current node and repeat the cycle
+    node = lowestCostNode(costs, processed); // reset the current node and repeat the cycle with new "processed" array
   }
 };
+
+console.log(dijkstra(myGraph));
