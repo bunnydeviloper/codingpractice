@@ -28,6 +28,7 @@ const lowestCostNode = (costs, processed) => {
 
 const dijkstra = (graph) => {
   // initialize some variables
+
   // create costs object to keep track of the cost to each neighboring nodes
   const costs = Object.assign({finish: Infinity}, graph.start);
   // example: costs = { A: 5, B: 2, finish: Infinity }
