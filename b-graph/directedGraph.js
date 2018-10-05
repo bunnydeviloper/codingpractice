@@ -1,3 +1,5 @@
+'use strict';
+
 // make a directed graph
 
 // initialize Graph object
@@ -80,9 +82,11 @@ Graph.prototype.detectCycle = function() {
   const visited = {};
   const recursionStack = {};
 
-  nodes.map(node => {
+  for (let i = 0; i < nodes.length; i++) {
+    const node = nodes[i];
+    console.log(this.detectCycleUtils(node, visited, recursionStack));
     if (this.detectCycleUtils(node, visited, recursionStack)) return 'There is a cycle!';
-  });
+  }
 
   return 'No cycle detected';
 };
@@ -104,11 +108,17 @@ Graph.prototype.detectCycleUtils = function(vertex, visited, recursionStack) {
     visited[vertex] = true;
     recursionStack[vertex] = true;
     const neighbors = this.adjList[vertex];
-    neighbors.map(currentNode => {
+    console.log('visited: ', visited, ' and recStack: ', recursionStack);
+    for (let i = 0; i < neighbors.length; i++) {
+      const currentNode = neighbors[i];
       console.log('parent: ', vertex, ' and child: ', currentNode);
-      if (!visite[currentNode] && this.detectCycleUtils(currentNode, visited, recursionStack)) return true;
-      else if (recursionStack[currentNode]) return true;
-    });
+      if (!visited[currentNode] && this.detectCycleUtils(currentNode, visited, recursionStack)) {
+        return true;
+      } else if (recursionStack[currentNode]) {
+        console.log('hey');
+        return true;
+      }
+    }
   }
   recursionStack[vertex] = false;
   return false;
@@ -117,6 +127,10 @@ Graph.prototype.detectCycleUtils = function(vertex, visited, recursionStack) {
 console.log(graph.detectCycle()); // No cycle detected
 console.log('================================================');
 
+graph.addEdge('E', 'A');
+console.log(graph.detectCycle()); // There is a cycle!
+
+/*
 const graph2 = new Graph();
 graph2.addVertex('A');
 graph2.addVertex('B');
@@ -127,3 +141,4 @@ graph2.addEdge('C', 'A');
 console.log(graph2);
 
 console.log(graph2.detectCycle()); // There is a cycle!
+*/
