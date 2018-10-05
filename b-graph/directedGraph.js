@@ -72,22 +72,58 @@ Graph.prototype.dfsUtils = function(vertex, visited, str) {
 };
 
 graph.dfs();
+console.log('================================================');
 
 // Modify DFS to check whether our graph is cyclic or acylic (detecting cycles)
 Graph.prototype.detectCycle = function() {
   const nodes = Object.keys(this.adjList);
   const visited = {};
-  const recStack = {};
+  const recursionStack = {};
 
-  nodes.forEach(node => {
-    if (this.detectCycleUtils(node, visited, recStack)) return 'There is a cycle!';
+  nodes.map(node => {
+    if (this.detectCycleUtils(node, visited, recursionStack)) return 'There is a cycle!';
   });
 
   return 'No cycle detected';
 };
 
-Graph.prototype.detectCycleUtils = function(vertex, visited, recStack) {
-  //
+Graph.prototype.detectCycleUtils = function(vertex, visited, recursionStack) {
+  /*
+  if (!visited[vertex]) {
+    visited[vertex] = true;
+    recursionStack[vertex] = true;
+    const neighbors = this.adjList[vertex];
+    neighbors.map(each => {
+      console.log('parent: ', vertex, ' and child: ', each);
+      if (this.detectCycleUtils(each, visited, recursionStack) || recursionStack[each]) return true;
+    });
+    recursionStack[vertex] = false;
+  }
+  */
+  if (!visited[vertex]) {
+    visited[vertex] = true;
+    recursionStack[vertex] = true;
+    const neighbors = this.adjList[vertex];
+    neighbors.map(currentNode => {
+      console.log('parent: ', vertex, ' and child: ', currentNode);
+      if (!visite[currentNode] && this.detectCycleUtils(currentNode, visited, recursionStack)) return true;
+      else if (recursionStack[currentNode]) return true;
+    });
+  }
+  recursionStack[vertex] = false;
+  return false;
 };
 
-graph.detectCycle();
+console.log(graph.detectCycle()); // No cycle detected
+console.log('================================================');
+
+const graph2 = new Graph();
+graph2.addVertex('A');
+graph2.addVertex('B');
+graph2.addVertex('C');
+graph2.addEdge('A', 'B');
+graph2.addEdge('B', 'C');
+graph2.addEdge('C', 'A');
+console.log(graph2);
+
+console.log(graph2.detectCycle()); // There is a cycle!
