@@ -27,13 +27,13 @@ const lowestCostNode = (costs, processed) => {
 // console.log(lowestCostNode({A:5, B:2, finish:Infinity}, [])); // B
 
 const dijkstra = (graph) => {
-  // initialize some variables
+  // ------ initialize some variables -------
 
   // create costs object to keep track of the cost to each neighboring nodes
   const costs = Object.assign({finish: Infinity}, graph.start);
   // example: costs = { A: 5, B: 2, finish: Infinity }
 
-  // create parents object to keep track of the parents' nodes
+  // create parents object so later on we can retrace the steps from 'start' to 'finish'
   const parents = {finish: null};
   for (let child in graph.start) { // add children of start node
     parents[child] = "start";
@@ -43,4 +43,22 @@ const dijkstra = (graph) => {
   // create processed array to keep track of the nodes we already visited
   const processed = []; // example: processed = ["start", "A", "B"]
 
+  // ------ calculate the lowest cost node -------
+  const node = lowestCostNode(costs, processed);
+  while (node) {
+    const cost = costs[node]; // get cost of current node, which is "B"
+
+    const children = graph[node]; // get all "neighbors" of current node, thus children = { A:8, D:7 };
+
+    for (let n in children) {
+      let newCost = cost + children[n];
+
+      if (!costs[n] || (costs[n] > newCost)) {
+        costs[n] = newCost;
+        parents[n] = node;
+      }
+    }
+    processed.push(node); // once done, push node to processed array
+    node = lowestCostNode(costs, processed); // reset the current node and repeat the cycle
+  }
 };
