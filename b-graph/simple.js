@@ -53,5 +53,10 @@ devBook.addEdge('Linus Torvalds', 'Michael Olorunnisola');
 
 console.log('Our graph after adding edges: \n', devBook);
 
+// Remove Relationship
+devBook.removeEdge('Linus Torvalds', 'Michael Olorunnisola');
+console.log('Our graph after remove relationship b/w Linus and Michael: \n', devBook);
+
 // Now we can remove users!
-// devBook.removeVertex('Linus Torvalds');
+devBook.removeVertex('Linus Torvalds');
+console.log('Our graph after remove user Linus: \n', devBook);
