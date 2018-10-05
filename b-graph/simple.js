@@ -1,3 +1,5 @@
+// resource: https://medium.freecodecamp.org/a-gentle-introduction-to-data-structures-how-graphs-work-a223d9ef8837
+
 let MakeGraph = () => {
   let graph = {};
   graph.contains = (node)=> {
@@ -35,5 +37,21 @@ let MakeGraph = () => {
   }
 return graph;
 }
+
+// TESTING
+let devBook = MakeGraph();
+devBook.addVertex('James Gosling');
+devBook.addVertex('Guido Rossum');
+devBook.addVertex('Linus Torvalds');
+devBook.addVertex('Michael Olorunnisola');
+
+console.log(devBook);
+
+// We'll add the edges here!
+devBook.addEdge('James Gosling', 'Guido Rossum');
+devBook.addEdge('Linus Torvalds', 'Michael Olorunnisola');
+
+console.log('Our graph after adding edges: \n', devBook);
+
 // Now we can remove users!
-devBook.removeVertex('Linus Torvalds');
+// devBook.removeVertex('Linus Torvalds');
