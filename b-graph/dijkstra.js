@@ -66,8 +66,16 @@ const dijkstra = (graph) => {
 
   // Once the while loop is complted, we'll have the lowest cost to reach "finish" node
   // We'll trace back the path from "start" to "finish" using parents object
+  console.log('parents: ', parents);
+  let optimalPath = ['finish']; // initialize optimal path with end point at 'finish'
 
+  let prevStop = parents.finish;
+  while (prevStop) {
+    optimalPath.unshift(prevStop); // add prevStop to the beginning of optimalPath (if use 'push', will need to reverse)
+    prevStop = parents[prevStop]; // update the prevStop
+  }
 
+  return result = { distance: costs.finish, path: optimalPath };
 };
 
-console.log(dijkstra(myGraph));
+console.log(dijkstra(myGraph)); // { distance: 8, path: ['start', 'A', 'D', 'finish'] }
