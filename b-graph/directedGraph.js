@@ -1,5 +1,3 @@
-'use strict';
-
 // make a directed graph
 
 // initialize Graph object
@@ -84,7 +82,6 @@ Graph.prototype.detectCycle = function() {
 
   for (let i = 0; i < nodes.length; i++) {
     const node = nodes[i];
-    console.log(this.detectCycleUtils(node, visited, recursionStack));
     if (this.detectCycleUtils(node, visited, recursionStack)) return 'There is a cycle!';
   }
 
@@ -92,18 +89,18 @@ Graph.prototype.detectCycle = function() {
 };
 
 Graph.prototype.detectCycleUtils = function(vertex, visited, recursionStack) {
-  /*
   if (!visited[vertex]) {
     visited[vertex] = true;
     recursionStack[vertex] = true;
     const neighbors = this.adjList[vertex];
-    neighbors.map(each => {
-      console.log('parent: ', vertex, ' and child: ', each);
-      if (this.detectCycleUtils(each, visited, recursionStack) || recursionStack[each]) return true;
-    });
+    for (let i = 0; i < neighbors.length; i++) {
+      const node = neighbors[i];
+      console.log('parent: ', vertex, ' and child: ', node);
+      if (this.detectCycleUtils(node, visited, recursionStack) || recursionStack[node]) return true;
+    }
     recursionStack[vertex] = false;
   }
-  */
+  /*
   if (!visited[vertex]) {
     visited[vertex] = true;
     recursionStack[vertex] = true;
@@ -115,13 +112,13 @@ Graph.prototype.detectCycleUtils = function(vertex, visited, recursionStack) {
       if (!visited[currentNode] && this.detectCycleUtils(currentNode, visited, recursionStack)) {
         return true;
       } else if (recursionStack[currentNode]) {
-        console.log('hey');
         return true;
       }
     }
   }
   recursionStack[vertex] = false;
   return false;
+  */
 };
 
 console.log(graph.detectCycle()); // No cycle detected
