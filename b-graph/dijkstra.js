@@ -46,7 +46,7 @@ const dijkstra = (graph) => {
   // ------ calculate the lowest cost node -------
   let node = lowestCostNode(costs, processed);
   while (node) {
-    console.log('CURRENT NODE (parent): ', node, 'costs: ', costs, 'parents: ', parents, 'processed: ', processed);
+    console.log('CURRENT NODE (parent): ', node, 'costs: ', costs, 'processed: ', processed);
     let cost = costs[node]; // get cost of current node (current node is "B", cost is 2)
 
     let children = graph[node]; // get all "neighbors" of current node (children = { A:8, D:7 })
@@ -63,6 +63,11 @@ const dijkstra = (graph) => {
     processed.push(node); // once done, push node to processed array
     node = lowestCostNode(costs, processed); // reset the current node and repeat the cycle with new "processed" array
   }
+
+  // Once the while loop is complted, we'll have the lowest cost to reach "finish" node
+  // We'll trace back the path from "start" to "finish" using parents object
+
+
 };
 
 console.log(dijkstra(myGraph));
