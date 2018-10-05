@@ -1,4 +1,5 @@
 // resource: https://medium.freecodecamp.org/a-gentle-introduction-to-data-structures-how-graphs-work-a223d9ef8837
+// make an undirected graph
 
 let MakeGraph = () => {
   let graph = {};
