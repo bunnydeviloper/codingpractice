@@ -1,4 +1,3 @@
-
 function Graph() {
   this.adjList = {}
 }
