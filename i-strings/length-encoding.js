@@ -1,7 +1,13 @@
 // take in a string, return an encoded string based on duplicate characters
 
-function lengthEncode (s) => {
-  let newStr = "";
+function lengthEncode (s) {
+  let count = 1;
+  let newStr = s.charAt(0) + count;
+  console.log(newStr);
+
+  for (let index in s) {
+    // todo
+  }
   return newStr;
 }
 
@@ -10,7 +16,7 @@ console.log(lengthEncode("???abcdddddee")); // ?3a1b1c1d5e2
 
 // DECODE: take in an encoded string, and decypted it to the original string
 
-function lengthDecode (s) => {
+function lengthDecode (s) {
   let orgStr = "";
   return orgStr;
 }
