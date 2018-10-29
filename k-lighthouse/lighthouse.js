@@ -58,17 +58,39 @@ function isShip(coordinate) {
   return lightCell(coordinate) === "v" ? true : false;
 }
 
-function allRocks() {
-  return GRID.filter(row => {
-    row.filter(cell => cell === "^");
-  })
+function getCoordinate(columnIndex, rowIndex) {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const columnLetter = letters.charAt(columnIndex);
+  return `${columnLetter}${rowIndex + 1}`;
 }
 
-function allCurrents() {
-  return GRID.filter(row => {
-    row.filter(cell => cell === "~");
+function allRocks() {
+  const rocksArr = [];
+  GRID.map((row, rowIndex) => {
+    if (row.includes("^")) {
+      row.map((column, columnIndex) => {
+        if (column === "^") rocksArr.push(getCoordinate(columnIndex, rowIndex));
+      });
+    }
   })
+  return rocksArr;
 }
+
+// console.log(allRocks());
+
+function allCurrents() {
+  const currentsArr = [];
+  GRID.map((row, rowIndex) => {
+    if (row.includes("^")) {
+      row.map((column, columnIndex) => {
+        if (column === "^") currentsArr.push(getCoordinate(columnIndex, rowIndex));
+      });
+    }
+  })
+  return currentsArr;
+}
+
+console.log(allCurrents());
 
 function lightRow(number) {
   return GRID[number - 1];
