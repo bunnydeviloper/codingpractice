@@ -92,6 +92,18 @@ function allCurrents() {
 
 console.log(allCurrents());
 
+function allShips() {
+  const shipsArr = [];
+  GRID.map((row, rowIndex) => {
+    if (row.includes("v")) {
+      row.map((column, columnIndex) => {
+        if (column === "v") shipsArr.push(getCoordinate(columnIndex, rowIndex));
+      })
+    }
+  })
+  return shipsArr;
+}
+
 function lightRow(number) {
   return GRID[number - 1];
 }
