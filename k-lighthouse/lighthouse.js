@@ -100,6 +100,10 @@ function allCurrents() {
 
 // console.log(allCurrents());
 
+function firstCurrent() {
+  return allCurrents()[0];
+}
+
 function percentageReport() {
   return [(allRocks().length / totalCells() * 100).toFixed(2), (allCurrents().length / totalCells() * 100).toFixed(2)];
 }
