@@ -121,6 +121,14 @@ function allShips() {
   return shipsArr;
 }
 
+function shipReport() {
+  let temp = [];
+  temp.push(allShips()[0]);
+  const last = allShips().pop();
+  temp.push(last);
+  return temp;
+}
+
 function lightRow(number) {
   return GRID[number - 1];
 }
