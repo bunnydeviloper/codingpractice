@@ -82,6 +82,10 @@ function allRocks() {
 
 // console.log(allRocks());
 
+function firstRock() {
+  return allRocks()[0];
+}
+
 function allCurrents() {
   const currentsArr = [];
   GRID.map((row, rowIndex) => {
