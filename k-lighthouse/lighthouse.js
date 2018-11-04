@@ -90,7 +90,7 @@ function allCurrents() {
   return currentsArr;
 }
 
-console.log(allCurrents());
+// console.log(allCurrents());
 
 function allShips() {
   const shipsArr = [];
