@@ -96,6 +96,11 @@ function allCurrents() {
 
 // console.log(allCurrents());
 
+function percentageReport() {
+  return [(allRocks().length / totalCells() * 100).toFixed(2), (allCurrents().length / totalCells() * 100).toFixed(2)];
+}
+// console.log(percentageReport());
+
 function allShips() {
   const shipsArr = [];
   GRID.map((row, rowIndex) => {
