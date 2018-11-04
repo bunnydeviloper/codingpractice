@@ -58,6 +58,10 @@ function isShip(coordinate) {
   return lightCell(coordinate) === "v" ? true : false;
 }
 
+function howDangerous(coordinate) {
+  return isCurrent(coordinate) ? 50 : isRock(coordinate) ? 100 : false;
+}
+
 function getCoordinate(columnIndex, rowIndex) {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const columnLetter = letters.charAt(columnIndex);
