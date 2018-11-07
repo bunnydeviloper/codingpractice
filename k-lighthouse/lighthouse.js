@@ -62,6 +62,15 @@ function howDangerous(coordinate) {
   return isCurrent(coordinate) ? 50 : isRock(coordinate) ? 100 : false;
 }
 
+function safetyReport() {
+  return GRID.map(row => {
+    return row.map(cell => {
+      return (cell === "~") ? cell = 50 : (cell === "^") ? cell = 100 : cell = 0;
+    })
+  })
+}
+// console.log(safetyReport());
+
 function getCoordinate(columnIndex, rowIndex) {
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const columnLetter = letters.charAt(columnIndex);
