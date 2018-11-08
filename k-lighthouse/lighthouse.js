@@ -37,6 +37,19 @@ function convertColumn(coordinate) {
 function convertRow(coordinate) {
   return GRID[coordinate.charAt(1) - 1];
 }
+
+function rowCoordinate(coordinate) {
+  return coordinate.charAt(1) - 1;
+}
+
+function calcDistance(coord1, coord2){
+  const first = Math.pow((convertColumn(coord2) - convertColumn(coord1)),2);
+  const second = Math.pow((rowCoordinate(coord2) - rowCoordinate(coord1)), 2);
+  return Math.sqrt(first + second).toFixed(2);
+}
+
+console.log(calcDistance("A3", "D8"));
+
 function lightCell(coordinate) {
   if (convertColumn(coordinate) < countColumns() && (coordinate.substr(1) - 1) <= countRows()) {
     // create subArr to get one specific row inside GRID
