@@ -1,6 +1,24 @@
 // function takes one argument, initialize with a base number
 // each time movingAverage.next(n) will return average number from current and all previous call
 
+function SimpleMovingAverage (base) {
+  this.next = (function(numerator) {
+    let denominator = 1; // initialize
+
+    return function(addMore) {
+      numerator += addMore; // critical, needs this to sum all inputs when calling .next()
+      denominator++;
+      console.log('simple: ' + numerator + ' / ' + denominator);
+      return numerator / denominator;
+    }
+  })(base);
+}
+
+const testSimple = new SimpleMovingAverage(1);
+testSimple.next(2); // 3/2
+testSimple.next(3); // 6/3
+testSimple.next(1); // 7/4
+
 function MovingAverage (base) {
   // this.base = base; // for constructor, but essentially dont need
 
