@@ -40,5 +40,8 @@ function twoSumWithRange(movieList, breaktime, margin) {
 }
 
 
-const movieList = [60, 45, 120, 30, 150, 100, 90];
-twoSumWithRange(movieList, 100, 20); // 80 mins break, 20 mins range
+const movieList = [60, 45, 55, 40, 120, 30, 150, 100, 90, 20];
+twoSumWithRange(movieList, 100, 20); // 100 mins break, 20 mins grace period
+twoSumWithRangeReturnAllPairs(movieList, 100, 20); // 100 mins break, 20 mins grace period
+// [20, 100], [20, 80], [20, 60], [30, 90], [30, 55], [30, 60], [40, 60]
+// [40, 55], [45, 60], [45, 55], [55, 60], [40, 45]
