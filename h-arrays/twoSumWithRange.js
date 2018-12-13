@@ -13,10 +13,30 @@ function twoSumWithRange(movieList, breaktime, margin) {
         let shortestMovie = sortedMovieList[0];
         let longestMovie = sortedMovieList[sortedMovieList.length - 1];
 
-    for (let i = 0; i < sortedMovieList.length; i++) {
-    // while( sortedMovieList.length > 1) {
-        const shortestMovie = sortedMovieList[i];
-        const longestMovie = sortedMovieList[sortedMovieList.length - 1];
+        for (let i = 0; i < sortedMovieList.length; i++) {
+            let diff = breaktime - (shortestMovie + longestMovie);
+
+            // if -margin <= difference <= +margin, then pair is acceptable
+            if (Math.abs(diff) <= margin) {
+                console.log(`Found a pair in range: [${shortestMovie}:${longestMovie}]`);
+                return true;
+            } else if (diff < margin) longestMovie = sortedMovieList[sortedMovieList.length - i - 1];
+            else shortestMovie = sortedMovieList[i + 1]; // diff > margin, move to next shortest
+        }
+    }
+    return false; // can't find any matching pair that total up within the margin range
+}
+
+
+
+function twoSumWithRangeReturnAllPairs(movieList, breaktime, margin) {
+    const sortedMovieList = movieList.sort((a, b) => a - b);
+    const resultPairs = [];
+
+    if (sortedMovieList.length <= 1) return resultPairs;
+    while (sortedMovieList.length > 1) {
+        let shortestMovie = sortedMovieList[0];
+        let longestMovie = sortedMovieList[sortedMovieList.length - 1];
 
         let diff = breaktime - (shortestMovie + longestMovie);
         console.log(diff);
