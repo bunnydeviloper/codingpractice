@@ -39,18 +39,19 @@ function twoSumWithRangeReturnAllPairs(movieList, breaktime, margin) {
         let longestMovie = sortedMovieList[sortedMovieList.length - 1];
 
         let diff = breaktime - (shortestMovie + longestMovie);
-        console.log(diff);
 
         // if -margin <= difference <= +margin, then it's acceptable
         if (Math.abs(diff) <= margin) {
-            console.log(`It's in the range. Current pair: [${shortestMovie}:${longestMovie}]`);
-            return true;
-        }
-        if (diff < margin) {
-            //longestMovie = sortedMovieList[sortedMovieList.length - ]
+            // check undefined b/c a 0 value will return falsy
+            resultPairs.push([shortestMovie, longestMovie]);
+            console.log(`Added new pair to result: `, resultPairs);
+
+            // TODO: can't just pick shift or pop, need some logic... result should have 12 pairs
+            sortedMovieList.pop(); // remove the last added result
+            // sortedMovieList.shift(); // remove the first added result
+        } else if (diff < margin) {
             sortedMovieList.pop(); // remove the last item, which is also the longest duration
-        }
-        if (diff > margin) {
+        } else {
             sortedMovieList.shift(); // remove the first item, which is the shortest duration
         }
     }
