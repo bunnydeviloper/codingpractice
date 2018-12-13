@@ -10,6 +10,8 @@ function twoSumWithRange(movieList, breaktime, margin) {
     console.log(sortedMovieList);
 
     if (sortedMovieList.length > 1) {
+        let shortestMovie = sortedMovieList[0];
+        let longestMovie = sortedMovieList[sortedMovieList.length - 1];
 
     for (let i = 0; i < sortedMovieList.length; i++) {
     // while( sortedMovieList.length > 1) {
@@ -31,12 +33,7 @@ function twoSumWithRange(movieList, breaktime, margin) {
         if (diff > margin) {
             sortedMovieList.shift(); // remove the first item, which is the shortest duration
         }
-        twoSumWithRange(sortedMovieList, breaktime, margin);
-
     }
-}
-
-    return false; // can't find any matching pair that total up within the margin range
 }
 
 
