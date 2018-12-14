@@ -3,13 +3,10 @@
 //  of all the numbers in the original array except the one at i.
 
 function arrayProduct (array) {
-    const newArray = array.map((e, i) => {
-        const temp = array;
-        temp.splice(i, 1);
-        e = computeProduct(temp);
-    });
-
-    return newArray;
+    return array.reduce((accum, curr) => {
+        accum.push(computeProduct(array) / curr);
+        return accum;
+    }, []);
 }
 
 function computeProduct (array) {
@@ -19,7 +16,6 @@ function computeProduct (array) {
 const testInput = [1, 2, 3, 4, 5];
 const testOutput =  [120, 60, 40, 30, 24];
 
-console.log(computeProduct([3, 2, 1])); // 6
 console.log(arrayProduct([3, 2, 1])); // [2, 3, 6]
 
 
