@@ -5,6 +5,7 @@
 // return a string with spaces 
 // assume no special characters, no capitalization
 
+/*
 const dictionaryAPI = [
     {a: ["apple", "alert"]},
     {b: ["basic", "bye", "beyond", "break", "butter"]},
@@ -12,13 +13,20 @@ const dictionaryAPI = [
     {i: ["i", "import", "improve"]},
     {p: ["peanut"]},
 ];
+*/
 
-function searchWord (world) {
-    // return word
-}
+const dictionaryAPI = [
+    "apple", "alert", "basic", "bye", "beyond", "break", "butter",
+    "eating", "exercise", "i", "import", "improve", "peanut",
+];
 
 funcntion breakIntoSpaces (string) {
     let newString = "";
+
+    for (let i = 0; i < string.length; i++) {
+        if (dictionaryAPI.includes(string.substring(0, i))) console.log("hi");
+        // if begin>index is a word in dic, add that word, cut string, repeat
+    }
 
     return newString;
 }
