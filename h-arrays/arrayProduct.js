@@ -16,8 +16,7 @@ function computeProduct (array) {
 console.log(arrayProduct([3, 2, 1])); // [2, 3, 6]
 console.log(arrayProduct([1, 2, 3, 4, 5])); // [120, 60, 40, 30, 24]
 
-// TODO: Follow-up: what if you can't use division?
-
+// Follow-up: what if you can't use division?
 function arrayProductWithoutDivision (array) {
     const resultArray = [];
 
