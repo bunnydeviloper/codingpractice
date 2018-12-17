@@ -20,11 +20,16 @@ const dictionaryAPI = [
     "eating", "exercise", "i", "import", "improve", "peanut",
 ];
 
-funcntion breakIntoSpaces (string) {
+function breakIntoSpaces (string) {
     let newString = "";
 
     for (let i = 0; i < string.length; i++) {
-        if (dictionaryAPI.includes(string.substring(0, i))) console.log("hi");
+        const currentSubstr = string.substring(0, i);
+        if (dictionaryAPI.includes(currentSubstr)) {
+            newString += currentSubstr + " ";
+            string = string.substring(i, string.length);
+            console.log(string);
+        }
         // if begin>index is a word in dic, add that word, cut string, repeat
     }
 
