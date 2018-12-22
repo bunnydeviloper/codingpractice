@@ -2,12 +2,12 @@
 // write a decoder so you can read the message with spaces
 
 // given a string without spaces and a dictionaryAPI
-// return a string with spaces 
+// return a string with spaces
 // assume no special characters, no capitalization
 
 /*
 const dictionaryAPI = [
-    {a: ["apple", "alert"]},
+    {a: ["apple", "alert", "am"]},
     {b: ["basic", "bye", "beyond", "break", "butter"]},
     {e: ["eating", "exercise"]},
     {i: ["i", "import", "improve"]},
