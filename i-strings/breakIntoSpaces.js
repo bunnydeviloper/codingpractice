@@ -20,18 +20,25 @@ const dictionaryAPI = [
   "eating", "exercise", "i", "is", "import", "important", "improve", "peanut"
 ];
 
-function breakIntoSpaces (string) {
-    let newString = "";
+function breakIntoSpaces (string, answer = '') {
+  if (string.length === 0) {
+    console.log('Answer: ', answer);
+    // return answer;
+  } else {
+    let prefix = '';
+    let suffix = '';
+    for (let i = 0; i <= string.length; i++) {
+      prefix = string.substring(0, i);
 
-    for (let i = 0; i < string.length; i++) {
-        const currentSubstr = string.substring(0, i);
-        if (dictionaryAPI.includes(currentSubstr)) {
-            newString += currentSubstr + " ";
-            string = string.substring(i, string.length);
-            console.log(string);
-        }
-        // if begin>index is a word in dic, add that word, cut string, repeat
+      //if prefix exists in dic, add prefix to the answer, break for loop, & recurse
+      if (dictionaryAPI.includes(prefix)) {
+        answer += prefix + " ";
+        suffix = string.slice(i);
+        break;
+      }
     }
+    breakIntoSpaces(suffix, answer);
+  }
 
     return newString;
 }
