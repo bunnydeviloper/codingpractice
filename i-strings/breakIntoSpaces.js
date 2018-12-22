@@ -16,8 +16,8 @@ const dictionaryAPI = [
 */
 
 const dictionaryAPI = [
-    "apple", "alert", "basic", "bye", "beyond", "break", "butter",
-    "eating", "exercise", "i", "import", "improve", "peanut",
+  "apple", "alert", "am", "and", "basic", "bye", "beyond", "break", "butter",
+  "eating", "exercise", "i", "is", "import", "important", "improve", "peanut"
 ];
 
 function breakIntoSpaces (string) {
