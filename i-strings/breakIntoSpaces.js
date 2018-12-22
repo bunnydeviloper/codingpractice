@@ -40,16 +40,18 @@ function breakIntoSpaces (string, answer = '') {
     breakIntoSpaces(suffix, answer);
   }
 
-    return newString;
+  // TODO: return the answer, and if you can't make a sentence, return false
 }
 
-// tips: check the length before checking the word
-
 const input = 'iameatingpeanutbutter';
+breakIntoSpaces(input); // 'i am eating peanut butter'
 
-console.log(breakIntoSpaces(input)); // 'i am eating peanut butter'
+// TODO: edge case for 'i' and 'is'
+breakIntoSpaces("eatingandexerciseisimportant"); // 'eating and exercise is important'
 
 /*
+tips: check the length before checking the word
+
 Some issues to consider:
 1. does the returning str has to be meaningful phrase or just str of valid words
 2. => how would you select the most likely solutions?
