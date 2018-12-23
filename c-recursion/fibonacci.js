@@ -25,9 +25,18 @@ console.log(getNthFib(2)); // 1
 // Both fib() and getNthFib() analysis: Time: O(2^n) | Space: O(n)
 
 // Improve: Time: O(n) | Space: O(n)
-function getNthFibIMP (n, memoize = {1: 0, 2: 1}) {
-  // if  
+function getNthFibIMP (n, memoize = {1: 0, 2: 1} /* count 1st elem as 1 */) {
+  // if (Object.keys(memoize).includes(n)) return memoize[n];
+  console.log(memoize);
+  if (memoize[n]) return memoize[n];
+  else {
+    memoize[n] = getNthFibIMP(n-1, memoize) + getNthFibIMP(n-2, memoize);
+    console.log(memoize[n]);
+    return memoize[n];
+  }
 }
+console.log(getNthFibIMP(7)); // 8
+// console.log(getNthFibIMP(2)); // 1
 
 
 // Improve2: Time: O(n) | Space: O(1)
