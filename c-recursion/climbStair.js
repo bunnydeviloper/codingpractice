@@ -6,5 +6,7 @@ function climbStair (steps) {
   return climbStair(steps - 1) + climbStair(steps - 2);
 }
 
+console.log(climbStair(1)); // 1 ways: 1
+console.log(climbStair(2)); // 2 ways: 1-1, 2
 console.log(climbStair(3)); // 3 ways: 1-1-1, 1-2, 2-1
 console.log(climbStair(5)); // 8 ways: 1-1-1-1-1, 1-1-1-2, 1-2-2, 1-2-1-1, 1-1-2-1, 2-1-1-1, 2-2-1, 2-1-2
