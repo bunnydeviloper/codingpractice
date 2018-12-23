@@ -12,3 +12,22 @@ console.log(climbStair(1)); // 1 ways: 1
 console.log(climbStair(2)); // 2 ways: 1-1, 2
 console.log(climbStair(3)); // 3 ways: 1-1-1, 1-2, 2-1
 console.log(climbStair(5)); // 8 ways: 1-1-1-1-1, 1-1-1-2, 1-2-2, 1-2-1-1, 1-1-2-1, 2-1-1-1, 2-2-1, 2-1-2
+
+function climbStairOptimal (steps) {
+  let lastTwo = [1, 2];
+  let counter = 3;
+  while (steps >= counter) {
+    const next = climbStairOptimal(steps - 1) + climbStairOptimal(steps - 2);
+    lastTwo[0] = lastTwo[1];
+    lastTwo[1] = next;
+    counter++;
+  }
+  return (steps > 1) ? lastTwo[1] : lastTwo[0]
+}
+// Time: O(n), Space: O(1)
+
+console.log(climbStairOptimal(1)); // 1
+console.log(climbStairOptimal(2)); // 2
+console.log(climbStairOptimal(3)); // 3
+console.log(climbStairOptimal(4)); // 5
+console.log(climbStairOptimal(5)); // 8
