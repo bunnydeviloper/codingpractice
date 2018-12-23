@@ -3,6 +3,7 @@
 
 function climbStair (steps) {
   if (steps <= 1) return 1;
+  // if (steps <= 2) return steps; // alternative
   return climbStair(steps - 1) + climbStair(steps - 2);
 }
 
