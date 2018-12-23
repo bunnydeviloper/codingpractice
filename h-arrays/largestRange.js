@@ -46,3 +46,25 @@ function largestRange(array) {
 const input = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6];
 console.log(largestRange(input)); // [0, 7]
 // [0, 1, 2, 3, 4, 5, 6, 7,\\ 10, 11, 12, 15]
+
+function largestRangeWithArraySort (array) {
+  array = array.sort((a, b) => a - b); // sorting is O(nlogn) time
+
+  /* TODO: not done...
+  let longestLength = 0;
+  let currentLength = 1;
+  let startingRange = array[0];
+  let endingRange;
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === array[i+1] - 1) {
+      endingRange = array[i+1];
+      currentLength++;
+    } else {
+      startingRange = array[i+1];
+    }
+  }
+  */
+}
+
+console.log(largestRangeWithArraySort(input)); // [0, 7]
