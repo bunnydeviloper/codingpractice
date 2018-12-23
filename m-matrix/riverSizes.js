@@ -15,9 +15,9 @@ function riverSizes(matrix) {
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; i < matrix[i].length; j++) {
       if (visited[i][j]) {
-        continue; // 'if visited = true, we skip this iteration
+        continue; // if visited = true, we skip this iteration
       }
-      traverseNode(i, j, matrix, visited, output);
+      traverseNode(i, j, matrix, visited, output); // helper fn
     }
   }
   return output;
@@ -27,6 +27,9 @@ function riverSizes(matrix) {
 function traverseNode (i, j, matrix, visited, output) {
   return output;
 }
+
+// Time : O(width * height), same as O(n) where n is the number of cells
+// Space: O(width * height) b/c of visited array + O(m) where m is the size of the output array
 
 const sampleInput = [
   [1, 0, 0, 1, 0],
