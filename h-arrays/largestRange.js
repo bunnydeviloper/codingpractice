@@ -6,8 +6,42 @@ A range is defined as a set of numbers that come right after each other
 */
 
 function largestRange(array) {
-  // Write your code here.
+  let bestRange = [];
+  let longestLength = 0;
+
+  const visited = {};
+  array.forEach(e => visited[e] = false);
+
+  for (let e in array) {
+    if (visited[e]) continue;
+    visited[e] = true;
+    let currentLength = 1;
+    let left = e - 1;
+    let right = +e + 1; // note: need to convert e to integer, otherwise it'll do string concat
+    // console.log(`current e: ${e} and left: ${left} and right: ${right}`);
+
+    while (visited[left] === false) { // constant look up in object
+      visited[left] = true;
+      currentLength++;
+      left--;
+    }
+
+    while (visited[right] === false) {
+      visited[right] = true;
+      currentLength++;
+      right++;
+    }
+
+    if (currentLength > longestLength) {
+      longestLength = currentLength;
+      bestRange = [left + 1, right - 1];
+    }
+  };
+
+  return bestRange;
 }
+
+// Time: O(n), Space: O(n)
 
 const input = [1, 11, 3, 0, 15, 5, 2, 4, 10, 7, 12, 6];
 console.log(largestRange(input)); // [0, 7]
