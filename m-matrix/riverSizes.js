@@ -57,9 +57,8 @@ function getUnvisitedNeighbors(i, j, matrix, visited) {
   unvisitedNeighbors = []; // initialize
 
   // if we are not at the top row
-  if (i > 0 && !visited[i-1][j]) {
+  if (i > 0 && !visited[i-1][j])
     unvisitedNeighbors.push([i-1,j]);
-  }
 
   // if we are not at the bottom row
   if (i < matrix.length - 1 && !visited[i+1][j])
