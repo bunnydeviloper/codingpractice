@@ -7,7 +7,7 @@ Write a function that returns an array of the sizes of all rivers
 */
 
 function riverSizes(matrix) {
-  let output = [];
+  let output = []; // initialize
   let visited = matrix.map(row => {
     return row.map(cell => cell = false);
   });
@@ -25,7 +25,30 @@ function riverSizes(matrix) {
 }
 
 function traverseNode (i, j, matrix, visited, output) {
-  return output;
+  let currentRiverSize = 0; // initialize
+  let nodesToExplore = [[i, j]];
+
+  while (nodesToExplore.length > 0) {
+    currentNode = nodesToExplore.pop(); // DFS using stack (if wanna use BFS => queue)
+    // i = currentNode[i];
+    // j = currentNode[j];
+    if (visited[i][j]) {
+      continue;
+    }
+    visited[i][j] = true;
+    if (matrix[i][j] === 0) {
+      continue; // note: cannot combine with the if stmt above
+    }
+    currentRiverSize += 1;
+
+    unvisitedNeighbors = getUnvisitedNeighbors(i, j, matrix, visited); // helper fn
+    unvisitedNeighbors.forEach(neighbor => nodesToExplore.push(neighbor));
+  }
+
+  if (currentRiverSize > 0) {
+    output.push(currentRiverSize);
+  }
+  // return output;
 }
 
 // Time : O(width * height), same as O(n) where n is the number of cells
