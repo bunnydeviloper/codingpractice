@@ -6,6 +6,7 @@ function climbStair (steps) {
   // if (steps <= 2) return steps; // alternative
   return climbStair(steps - 1) + climbStair(steps - 2);
 }
+// Time: O(2^n) => to reduce this, use memoization
 
 console.log(climbStair(1)); // 1 ways: 1
 console.log(climbStair(2)); // 2 ways: 1-1, 2
