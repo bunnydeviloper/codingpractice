@@ -14,5 +14,5 @@ function oddNumbers(l, r) {
   return [...array];
 }
 
-console.log(oddNumbers(2, 4));
-console.log(oddNumbers(3, 9));
+console.log(oddNumbers(2, 4)); // 3
+console.log(oddNumbers(3, 9)); // 3, 5, 7, 9
