@@ -13,3 +13,6 @@ function quickSort (array) {
   }
 
 }
+
+const testInput = [10, 3, 0, 4, 8, 15];
+console.log(quickSort(testInput)); // [0, 3, 4, 8, 10, 15]
