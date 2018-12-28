@@ -25,3 +25,9 @@ function quickSort (array) {
 
 const testInput = [10, 3, 0, 4, 8, 15];
 console.log(quickSort(testInput)); // [0, 3, 4, 8, 10, 15]
+
+// quicksort VS. merge sort:
+// merge sort has worst case O(nlogn)
+// but quicksort is faster b/c quicksort has a smaller constant than merge sort
+// also, quicksort is faster in practice b/c it hits the average case way more often than the worst case
+// (if you always choose a randome element in the array as the pivot, quicksort will complete in O(nlogn) time on average.
