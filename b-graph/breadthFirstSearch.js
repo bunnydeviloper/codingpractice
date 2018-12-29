@@ -9,6 +9,7 @@ myNetwork['khoa'] = ['mimi']; // 3rd degree
 myNetwork['caroline'] = [];
 myNetwork['steph'] = [];
 myNetwork['mimi'] = []; // undirected graph, so mimi doesn't point back to 'khoa'
+// myNetwork['mimi'] = ['khoa'];
 myNetwork['thomas'] = [];
 myNetwork['mike'] = [];
 
@@ -18,15 +19,26 @@ myNetwork['mike'] = [];
 // (same as: is there a path from A (you) to B (mango seller)
 function findMangoSellerBFS(graph) {
   let searchQueue = graph['you']; // use enqueue and dequeue
+  let checked = [];
 
   while (searchQueue.length > 0) {
     const person = searchQueue.shift();
-    if (isMangoSeller(person)) {
-      console.log('Found one mango seller name: ', person);
-      return true;
-    } else {
-      // if person is not mango seller, we add his/her friends to the searchQueue
-      graph[person].forEach(e => searchQueue.push(e));
+
+    // only check new friends who's not in checked list
+    if (!checked.includes(person)) {
+      if (isMangoSeller(person)) {
+        console.log('Found one mango seller name: ', person);
+        return true;
+
+      } else {
+        // if person is not mango seller, we add him/her to the checked queue, and add his/her friends to the searchQueue
+        checked.push(person);
+        graph[person].forEach(e => {
+          // only add new friends who are not currently in searchQueue
+          // this prevent infinite loop for friends of friends in circle
+          if (!searchQueue.includes(e)) searchQueue.push(e)
+        });
+      }
     }
   }
   console.log('Cannot find mango seller');
@@ -40,6 +52,8 @@ function isMangoSeller(name) {
 }
 
 findMangoSellerBFS(myNetwork); // true
+
+// Time: , Space:
 
 // who is the closest mango seller
 // what is the shortest path from A to B?
