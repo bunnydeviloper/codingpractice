@@ -38,6 +38,7 @@ function findMangoSellerBFS(graph) {
           // this prevent infinite loop for friends of friends in circle
           if (!searchQueue.includes(e)) searchQueue.push(e)
         });
+        console.log(searchQueue);
       }
     }
   }
@@ -52,9 +53,10 @@ function isMangoSeller(name) {
 }
 
 findMangoSellerBFS(myNetwork); // true
+// who is the closest mango seller (shortest path from you=>mango) ==> mimi
 
 // Time: O(no. of peple - vertices) + O(no. of edges) = O(V+E)
 // Space:
 
-// who is the closest mango seller
-// what is the shortest path from A to B?
+// BFS tesll you if there's a path from A to B
+// if there's a path, BFS will find the shortest path
