@@ -53,7 +53,8 @@ function isMangoSeller(name) {
 
 findMangoSellerBFS(myNetwork); // true
 
-// Time: , Space:
+// Time: O(no. of peple - vertices) + O(no. of edges) = O(V+E)
+// Space:
 
 // who is the closest mango seller
 // what is the shortest path from A to B?
