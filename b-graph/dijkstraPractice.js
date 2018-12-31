@@ -9,11 +9,15 @@ const myGraph = {
 };
 
 function lowestCostNode (costObj, processedArr) {
- //
+  //
 }
 
 function createParentObj (graph) {
-  //
+  const parentObj = {'finish': null};
+  for (let node in graph.start) {
+    parentObj[node] = 'start';
+  }
+  return parentObj;
 }
 
 function dijkstra (graph) {
