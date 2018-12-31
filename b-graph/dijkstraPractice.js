@@ -94,3 +94,6 @@ const testInput3 = { // graph w/ -weight, dijkstra won't give optimalPath
 console.log('testinput1 result: ', dijkstra(testInput1));
 console.log('testinput2 result: ', dijkstra(testInput2));
 console.log('testinput3 result: ', dijkstra(testInput3)); // expect error
+
+// note: Dijkstra works when all the weight are positive
+// If you have negative weights, use the Bellman-Ford algorithm
