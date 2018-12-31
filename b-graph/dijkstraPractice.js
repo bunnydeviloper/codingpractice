@@ -8,7 +8,7 @@ const myGraph = {
   'finish': {}
 };
 
-function lowestCostNode (costObj, processedArr) {
+function findLowestCostNode (costObj, processedArr) {
   return Object.keys(costObj).reduce((accum, currNode) => {
     if (accum === null || costObj[currNode] < costObj[accum]) {
       if (!processedArr.includes(currNode)) {
@@ -37,13 +37,29 @@ function dijkstra (graph) {
   const processedArr = [];
   const parentObj = createParentObj(graph);
 
-  let lowest = lowestCostNode(costObj, processedArr);
-  console.log(lowest);
+  let currLowestCostNode = findLowestCostNode(costObj, processedArr);
+
+  while (currLowestCostNode) {
+    let costOfCurrLowest = costObj[currLowestCostNode];
+
+    let children = graph[currLowestCostNode]; // add all children
+    for (let child in children) {
+      let newCost = costOfCurrLowest + children[child];
+      if (newCost < costObj[child] || !costObj[child]) {
+        costObj[child] = newCost;
+        parentObj[child] = currLowestCostNode;
+      }
+    }
+    processedArr.push(currLowestCostNode);
+    currLowestCostNode = findLowestCostNode(costObj, processedArr);
+  }
+
+  return optimalResult(parentObj);
 }
 
 dijkstra(myGraph);
 
 // step1: create graph, init dijkstra fn
-// step2: init var, identify helper fns
-// step3: write while loop inside dijkstra
-// step4: write optimalResult helper fn
+// step2: init var inside dijkstra fn, identify helper fns, write outside
+// step3: write while loop inside dijkstra, update costObj + parentObj each iteration
+// step4: once while loop finished, write optimalResult helper fn
