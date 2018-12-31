@@ -28,7 +28,11 @@ function createParentObj (graph) {
 }
 
 function optimalResult (parentObj) {
-  let optimalPathArr = [];
+  let optimalPathArr = ['finish'];
+  while (optimalPathArr[0] !== 'start') {
+    optimalPathArr.unshift(parentObj[optimalPathArr[0]]);
+
+  }
   return optimalPathArr;
 }
 
@@ -54,10 +58,11 @@ function dijkstra (graph) {
     currLowestCostNode = findLowestCostNode(costObj, processedArr);
   }
 
-  return optimalResult(parentObj);
+  return { distance: costObj['finish'], path: optimalResult(parentObj) };
 }
 
-dijkstra(myGraph);
+const result = dijkstra(myGraph);
+console.log(result);
 
 // step1: create graph, init dijkstra fn
 // step2: init var inside dijkstra fn, identify helper fns, write outside
