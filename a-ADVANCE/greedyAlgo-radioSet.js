@@ -8,3 +8,12 @@
 // (it's ok if the station covers some states that have been covered already)
 // 2) repeat until all the states are covered
 // => greedy algorithm runs in O(n^2) time, where n is the number of radio stations
+
+const stations = {};
+stations['one'] = new Set(['ID', 'NV', 'UT']);
+stations['two'] = new Set(['WA', 'ID', 'MT']);
+stations['three'] = new Set(['OR', 'NV', 'CA']);
+stations['four'] = new Set(['NV', 'UT']);
+stations['five'] = new Set(['CA', 'AZ']);
+
+const statesNeeded = new Set(['MT', 'WA', 'OR', 'ID', 'NV', 'UT', 'CA', 'AZ']);
