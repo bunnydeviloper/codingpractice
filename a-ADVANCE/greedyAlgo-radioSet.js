@@ -17,3 +17,18 @@ stations['four'] = new Set(['NV', 'UT']);
 stations['five'] = new Set(['CA', 'AZ']);
 
 const statesNeeded = new Set(['MT', 'WA', 'OR', 'ID', 'NV', 'UT', 'CA', 'AZ']);
+
+function intersection (set1, set2) {
+  // helper
+}
+
+function difference (set1, set2) {
+  // helper
+}
+
+function radioSet (stations, statesNeeded) {
+  // main
+}
+
+const result = radioSet(stations, statesNeeded);
+console.log(result);
