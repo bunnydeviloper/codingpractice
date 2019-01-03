@@ -30,11 +30,13 @@ function longestCommonSubstring (mistypedWord, guessedWord) {
 
   for (let i = 0; i < mistypedWord.length; i++) {
     for (let j = 0; j < guessedWord.length; j++) {
+      // if the letters match, the value of cell will be top-left-neighbor + 1
       if (mistypedWord[i] === guessedWord[j]) {
-      // console.log('grid: ', grid[i-1]);
-        if (i === 0) grid[i][j] = 1;
+        if (i === 0) grid[i][j] = 1; // prevent negative index, eg: i-1 when i=0
         else grid[i][j] = grid[i-1][j-1] + 1;
       }
+
+      // if the letters don't match, the value of cell is 0
       else grid[i][j] = 0;
     }
   }
@@ -48,7 +50,10 @@ console.log('hish VS fish: ', result);
 result = longestCommonSubstring('hish', 'vista');
 console.log('hish VS vista: ', result);
 
-// longest common subsequence
+// problem: longestCommonSubstring('fort', 'fish') === longestCommonSubstring('fosh', 'fish') // 2
+// so we need to compare the longest common subsequence
+// (aka: the number of letters in a sequence that the two words have in common)
+//
 function longestCommonSubsequence (mistypedWord, guessedWord) {
   // return
 }
