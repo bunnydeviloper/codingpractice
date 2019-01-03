@@ -14,6 +14,17 @@ function makeGrid (string1, string2) {
 
 // makeGrid('hi', 'twice');
 
+function findMaxValueInGrid (grid) {
+  let max = 0;
+  grid.forEach(e => {
+    if (Math.max(...e) > max) max = Math.max(...e);
+  });
+  return max;
+}
+
+// const max = findMaxValueInGrid([[1, 3], [2, 0, 5], [1]]);
+// console.log(max); // 5
+
 function longestCommonSubstring (mistypedWord, guessedWord) {
   let grid = makeGrid(mistypedWord, guessedWord);
 
