@@ -47,6 +47,9 @@ function maxProfitWithKTransactions(prices, k) {
   return profitMatrix[k][prices.length-1]; // DP grid result always the value of last cell in matrix
 }
 
+// O(nk) time where n is length of prices array and k is number of transactions
+// O(nk) space since we're making the 2D array (matrix)
+
 const result = maxProfitWithKTransactions(inputPrices, 2);
 console.log(result); // 93
 
