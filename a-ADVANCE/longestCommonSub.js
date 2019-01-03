@@ -55,7 +55,31 @@ console.log('hish VS vista: ', result);
 // (aka: the number of letters in a sequence that the two words have in common)
 //
 function longestCommonSubsequence (mistypedWord, guessedWord) {
-  // return
+  let grid = makeGrid(mistypedWord, guessedWord);
+
+  for (let i = 0; i < mistypedWord.length; i++) {
+    for (let j = 0; j < guessedWord.length; j++) {
+      // if the letters match, the value of cell will be top-left-neighbor + 1
+      if (mistypedWord[i] === guessedWord[j]) {
+        if (i === 0) grid[i][j] = 1; // prevent negative index, eg: i-1 when i=0
+        else grid[i][j] = grid[i-1][j-1] + 1;
+      }
+
+      // if the letters don't match, the value of cell the larger of top-cell or left-cell
+      else {
+        if (j === 0 && i !== 0) grid[i][j] = grid[i-1][j];
+        if (i === 0 && j !== 0) grid[i][j] = grid[i][j - 1];
+        else grid[i][j] = Math.max(grid[i-1][j], grid[i][j-1]);
+      }
+    }
+  }
+
+  console.log(grid);
+
+  return findMaxValueInGrid(grid);
 }
 
-
+let testSubsequence = longestCommonSubsequence('fosh', 'fish');
+console.log('testSubsequence for FOSH vs FISH: ', testSubsequence);
+testSubsequence = longestCommonSubsequence('fort', 'fish');
+console.log('testSubsequence for FORT vs FISH: ', testSubsequence);
