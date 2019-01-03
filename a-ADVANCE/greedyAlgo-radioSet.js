@@ -21,11 +21,12 @@ const statesNeeded = new Set(['MT', 'WA', 'OR', 'ID', 'NV', 'UT', 'CA', 'AZ']);
 function intersection (set1, set2) {
   let _intersection = new Set();
 
-  for (let elem in set2) {
+  for (let elem of set2) {
     if (set1.has(elem)) _intersection.add(elem);
   }
   return _intersection;
 }
+// console.log(intersection(stations.one, stations.three)); // Set { 'NV' }
 
 function difference (set1, set2) {
   // helper
