@@ -37,7 +37,27 @@ function difference (masterSet, setToSubtract) {
 // console.log(difference(stations.one, stations.three)); // Set { 'ID', 'UT' }
 
 function radioSet (stations, statesNeeded) {
-  // main
+  let finalStations = new Set();
+
+  while (statesNeeded.size > 0) {
+    let bestStation;
+    let statesCovered = new Set();
+
+    // loop through each station and find the one that covers the most states
+    for (let eachStation in stations) {
+      const covered = intersection(stations[eachStation], statesNeeded);
+      if (covered.size > statesCovered.size) {
+        statesCovered = covered;
+        bestStation = eachStation;
+      }
+    }
+
+    // update variables for the next while loop
+    statesNeeded = difference(statesNeeded, statesCovered);
+    finalStations.add(bestStation);
+  }
+
+  return finalStations;
 }
 
 const result = radioSet(stations, statesNeeded);
