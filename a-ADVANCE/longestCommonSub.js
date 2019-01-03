@@ -67,19 +67,18 @@ function longestCommonSubsequence (mistypedWord, guessedWord) {
 
       // if the letters don't match, the value of cell the larger of top-cell or left-cell
       else {
-        if (j === 0 && i !== 0) grid[i][j] = grid[i-1][j];
         if (i === 0 && j !== 0) grid[i][j] = grid[i][j - 1];
+        else if (i !== 0 && j === 0) grid[i][j] = grid[i-1][j];
         else grid[i][j] = Math.max(grid[i-1][j], grid[i][j-1]);
       }
     }
   }
 
-  console.log(grid);
-
+  // console.log(grid);
   return findMaxValueInGrid(grid);
 }
 
 let testSubsequence = longestCommonSubsequence('fosh', 'fish');
 console.log('testSubsequence for FOSH vs FISH: ', testSubsequence);
-testSubsequence = longestCommonSubsequence('fort', 'fish');
-console.log('testSubsequence for FORT vs FISH: ', testSubsequence);
+testSubsequence = longestCommonSubsequence('fosh', 'fort');
+console.log('testSubsequence for FOSH vs FORT: ', testSubsequence);
