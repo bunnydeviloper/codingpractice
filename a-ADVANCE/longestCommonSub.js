@@ -39,11 +39,14 @@ function longestCommonSubstring (mistypedWord, guessedWord) {
     }
   }
 
-  console.log(grid);
-  return grid;
+  return findMaxValueInGrid(grid);
 }
 
-longestCommonSubstring('hish', 'fish');
+let result = longestCommonSubstring('hish', 'fish');
+console.log('hish VS fish: ', result);
+
+result = longestCommonSubstring('hish', 'vista');
+console.log('hish VS vista: ', result);
 
 // longest common subsequence
 function longestCommonSubsequence (mistypedWord, guessedWord) {
