@@ -20,7 +20,6 @@ const statesNeeded = new Set(['MT', 'WA', 'OR', 'ID', 'NV', 'UT', 'CA', 'AZ']);
 
 function intersection (set1, set2) {
   let _intersection = new Set();
-
   for (let elem of set2) {
     if (set1.has(elem)) _intersection.add(elem);
   }
@@ -28,9 +27,14 @@ function intersection (set1, set2) {
 }
 // console.log(intersection(stations.one, stations.three)); // Set { 'NV' }
 
-function difference (set1, set2) {
-  // helper
+function difference (masterSet, setToSubtract) {
+  let _difference = new Set(masterSet);
+  for (let elem of setToSubtract) {
+    _difference.delete(elem);
+  }
+  return _difference;
 }
+// console.log(difference(stations.one, stations.three)); // Set { 'ID', 'UT' }
 
 function radioSet (stations, statesNeeded) {
   // main
