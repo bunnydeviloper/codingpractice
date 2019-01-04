@@ -19,6 +19,15 @@ function maxProfit (prices, k) {
       previous = oddRow;
     }
 
+    for (let d = 0; d < prices.length; d++) {
+      if (t === 0 || d === 0) current[d] = 0;
+      else {
+        maxThusFar = Math.max(maxThusFar, previous[d-1] - prices[d-1]);
+        // console.log(maxThusFar);
+        current[d] = Math.max(current[d-1], prices[d] + maxThusFar);
+      }
+      console.log(current);
+    }
   }
   // console.log(oddRow);
   // console.log(evenRow);
