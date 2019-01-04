@@ -50,21 +50,29 @@ console.log(largestRange(input)); // [0, 7]
 function largestRangeWithArraySort (array) {
   array = array.sort((a, b) => a - b); // sorting is O(nlogn) time
 
-  /* TODO: not done...
+  let bestRange = [];
   let longestLength = 0;
-  let currentLength = 1;
-  let startingRange = array[0];
-  let endingRange;
+  let endRange;
+  let beginRange;
 
   for (let i = 0; i < array.length; i++) {
-    if (array[i] === array[i+1] - 1) {
-      endingRange = array[i+1];
+    let currentLength = 1;
+    beginRange = array[i];
+    while (array[i] === array[i+1] - 1) {
+      endRange = array[i+1];
       currentLength++;
-    } else {
-      startingRange = array[i+1];
+      i++;
+    }
+
+    if (currentLength > longestLength) {
+      longestLength = currentLength;
+      bestRange[0] = beginRange;
+      bestRange[1] = endRange;
     }
   }
-  */
+  return bestRange;
 }
 
+const input2 = [4, 5, 6, 1, 3, 7, 8, 9, 11, 10, 12, 13, 14];
 console.log(largestRangeWithArraySort(input)); // [0, 7]
+console.log(largestRangeWithArraySort(input2)); // [3, 14]
