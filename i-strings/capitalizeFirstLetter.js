@@ -11,6 +11,11 @@ function capitalizeFirstLetter (string) {
   return wordArr.join(' ');;
   */
 
+  // return string.replace(/\b[a-z]/gi, function(char) {
+  //   return char.toUpperCase();
+  // });
+  // note: with this regex, 2nd test will return 'I Love JavaScript'
+
   return string
     .toLowerCase()
     .split(' ')
