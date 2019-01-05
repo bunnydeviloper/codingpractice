@@ -2,9 +2,14 @@
 const reverseStr = (s) => {
   let newS = "";
   // each iteration, you add the last letter of original string to newS
+
+  for (let char of s) newS += char;
+  /*
   for (let i=1; i < s.length + 1; i++) {
     newS += s.charAt(s.length - i);
   }
+  */
+
   return newS;
 };
 
