@@ -14,7 +14,7 @@ function longestWord(str) {
 }
 
 const testResult = longestWord('Today is a beautiful day');
-console.log(testResult);
+console.log(testResult); // 'beautiful'
 const test2 = longestWord('Hello there, I love the sun');
-console.log(test2);
+console.log(test2); // ['hello', 'there']
 
