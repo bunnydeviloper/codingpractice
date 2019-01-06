@@ -17,4 +17,6 @@ function formatStr (string) {
 }
 
 const test = is_anagram('elbow', 'below');
-console.log(test);
+console.log(test); // true
+const test2 = is_anagram('Dormitory', 'dirty @#$@room');
+console.log(test2); // true
