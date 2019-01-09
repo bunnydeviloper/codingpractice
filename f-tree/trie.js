@@ -50,5 +50,6 @@ myTrie.add('sync');
 console.log(myTrie);
 console.log(JSON.stringify(myTrie, null, 4));
 myTrie.add('seafood');
-console.log(myTrie.root.children); // 'y' and 'e' should be children of 's' ('s' is child of root)
+console.log(myTrie.root.children); // 'y' and 'e' should be children of 's' ('s' is child of root
+
 
