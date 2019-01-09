@@ -1,6 +1,6 @@
 // Trie data structure
 
-const Node = (data) => {
+function Node (data) {
   this.data = data;
   this.isWord = false;
   this.children = {};
@@ -12,13 +12,43 @@ function Trie () {
 }
 
 Trie.prototype.add = function (word) {
-  // step 1: caution check if the root exists
+  // caution check if the root exists
   if (!this.root) {
     return null;
+
+    // this.root = new Node('');
+    // return this._addNode(this.root, word);
   }
   this._addNode(this.root, word); // define below
 };
 
-Trie.prototype._addNode = function (rootNode, word) {
-  //
+Trie.prototype._addNode = function (currRootNode, word) {
+  // step 1: check if word or node exists
+  if (!currRootNode || !word) {
+    return null;
+  }
+  // step 2: extract first letter, add to children of current node
+  // currRootNode.prefixes++;
+  const letter = word.charAt(0);
+  let child = currRootNode.children[letter];
+
+  if (!child) {
+    child = new Node(letter);
+    currRootNode.children[letter] = child;
+  }
+
+  // step 3: extract remainder, if done adding => change isWord to True, else recurse until the end
+  const remainder = word.substring(1);
+  if (!remainder) {
+    child.isWord = true;
+  }
+  this._addNode(child, remainder);
 };
+
+const myTrie = new Trie();
+myTrie.add('sync');
+console.log(myTrie);
+console.log(JSON.stringify(myTrie, null, 4));
+myTrie.add('seafood');
+console.log(myTrie.root.children); // 'y' and 'e' should be children of 's' ('s' is child of root)
+
