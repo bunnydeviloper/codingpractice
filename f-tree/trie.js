@@ -11,6 +11,7 @@ function Trie () {
   this.root = new Node(''); // initialize tree with empty root node
 }
 
+// -------- add (insert) ------- //
 Trie.prototype.add = function (word) {
   // caution check if the root exists
   if (!this.root) {
@@ -50,6 +51,14 @@ myTrie.add('sync');
 console.log(myTrie);
 console.log(JSON.stringify(myTrie, null, 4));
 myTrie.add('seafood');
-console.log(myTrie.root.children); // 'y' and 'e' should be children of 's' ('s' is child of root
+
+// after adding: 'y' and 'e' should be children of 's' ('s' is child of root
+console.log('Y and E should be children of S: \n', myTrie.root.children);
+
+// -------- contain (search) ------- //
+Trie.prototype.contain = function (word) {
+  if (!this.root) return false;
+  this._contains(this.root, word);
+};
 
 
