@@ -58,7 +58,27 @@ console.log('Y and E should be children of S: \n', myTrie.root.children);
 // -------- contain (search) ------- //
 Trie.prototype.contain = function (word) {
   if (!this.root) return false;
-  this._contains(this.root, word);
+  return this._contain(this.root, word); // make sure to 'return'
 };
 
+Trie.prototype._contain = function (currRootNode, word) {
+  if (!currRootNode || !word) return false;
 
+  // traverse down (dfs) the children, each step checking if we find the character accordingly
+  const letter = word.charAt(0);
+  let child = currRootNode.children[letter];
+
+  if (child) {
+    let remainder = word.substring(1);
+    if (!remainder && child.isWord) {
+      return true;
+    } else {
+      return this._contain(child, remainder); // make sure to 'return'
+    }
+  } else {
+    return false;
+  }
+};
+
+console.log(myTrie.contain('solar')); // false
+console.log(myTrie.contain('sync')); // true
