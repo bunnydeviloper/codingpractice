@@ -82,3 +82,5 @@ Trie.prototype._contain = function (currRootNode, word) {
 
 console.log(myTrie.contain('solar')); // false
 console.log(myTrie.contain('sync')); // true
+
+module.exports = Trie;
