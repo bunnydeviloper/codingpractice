@@ -11,3 +11,5 @@ console.log('--------------------------------------');
 Trie.prototype.remove = funtion(word) {
   // remove a word from a trie
 };
+
+// reference: http://blog.benoitvallon.com/data-structures-in-javascript/the-trie-data-structure/
