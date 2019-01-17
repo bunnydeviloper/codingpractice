@@ -1,3 +1,7 @@
+function Tree (node) {
+  this.root = node;
+}
+
 // construct a binary tree to test
 function Node (value, left, right) {
   this.value = value;
@@ -7,25 +11,39 @@ function Node (value, left, right) {
 
 const leftNode = new Node(2, new Node(1, null, null), null);
 const rightNode = new Node(4, null, null);
-const myTree = new Node(3, leftNode, rightNode);
+const rootNode = new Node(3, leftNode, rightNode);
+const myTree = new Tree(rootNode);
 
 console.log('ORIGINAL TREE: \n', myTree);
 
 
 // Serialize a tree: convert tree to string
 function serialize (tree) {
-  // precaution check: if tree doesnt have root, return
+  if (!tree.root) return 'Invalid tree'; // precaution check
 
-  // if all is well, call serializer function with root of tree and result
+  // serializer function return and array so we need to convert it to string
+  else {
+  let result = [];
+  result = serializer(tree.root, result);
+  console.log(result);
+  }
+  // return serializer(tree.root).join('');
 }
 
-function serializer (tree, result = []) {
+function serializer (node, result) {
   // base case: if no more nodes, return result array
+  if (!node) {
+    result.push('#');
+    // console.log(result);
+    return; // result;
+  }
 
   // push the value of current node
+  result.push(node.value);
 
   // recursively call fn serialier for left branch and right branch
-
+  serializer(node.left, result);
+  serializer(node.right, result);
 }
 
 const serializeResult = serialize(myTree);
