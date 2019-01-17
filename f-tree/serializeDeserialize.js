@@ -14,7 +14,7 @@ const rightNode = new Node(4, null, null);
 const rootNode = new Node(3, leftNode, rightNode);
 const myTree = new Tree(rootNode);
 
-console.log('ORIGINAL TREE: \n', myTree);
+// console.log('ORIGINAL TREE: \n', myTree);
 
 
 // Serialize a tree: convert tree to string
@@ -23,19 +23,17 @@ function serialize (tree) {
 
   // serializer function return and array so we need to convert it to string
   else {
-  let result = [];
-  result = serializer(tree.root, result);
-  console.log(result);
+    let result = [];
+    serializer(tree.root, result);
+    return result.join('.');
   }
-  // return serializer(tree.root).join('');
 }
 
 function serializer (node, result) {
-  // base case: if no more nodes, return result array
+  // base case: if node doesn't exist, we push # to result array and exit recursion
   if (!node) {
     result.push('#');
-    // console.log(result);
-    return; // result;
+    return;
   }
 
   // push the value of current node
