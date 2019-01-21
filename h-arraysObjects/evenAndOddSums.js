@@ -4,12 +4,7 @@
 function evenAndOddSums (array) {
   let evenSum = 0;
   let oddSum = 0;
-
-  array.map(e => {
-    if (e % 2 === 0) evenSum += e;
-    else oddSum += e;
-  });
-
+  array.forEach(e => (e % 2 === 0) ? evenSum += e : oddSum += e);
   return [evenSum, oddSum];
 }
 
