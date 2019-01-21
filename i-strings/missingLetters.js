@@ -6,10 +6,15 @@ function missingLetters(s) {
   let compare = s.charCodeAt(0);
   let missing;
 
-  s.split('').map((char, i) => {
+  for (let i = 0; i < s.length; i++) {
     if (s.charCodeAt(i) === compare) compare++;
     else missing = String.fromCharCode(compare);
-  });
+  }
+
+  // s.split('').map((char, i) => {
+  //   if (s.charCodeAt(i) === compare) compare++;
+  //   else missing = String.fromCharCode(compare);
+  // });
 
   return missing;
 }
