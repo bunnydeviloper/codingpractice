@@ -46,22 +46,25 @@ function swapNodes (list, x, y) {
     currY = currY.next;
   }
 
-  // third, change next of prev pointers
-  if (currX !== head) prevX.next = currY;
-  else head = currY;
+  // If either x or y is not present, nothing to do
+  if (currX === null || currY === null) return;
 
-  if (currY !== head) prevY.next = currX;
-  else head = currX;
+  // third, change next of prev pointers
+  if (prevX !== null) prevX.next = currY; // if X is not head of list
+  else head = currY; // else make Y the new head
+
+  if (prevY !== null) prevY.next = currX; // if Y is not head of list
+  else head = currX; // make X the new head
 
   // fourth, change next of curr pointers
   let temp = currX.next;
   currX.next = currY.next;
   currY.next = temp;
 
-  return list;
+  return head;
 }
 
 const result = swapNodes(myList, 10, 20);
 console.log('After swapping: \n');
-console.dir(myList, { depth: null });
+console.dir(result, { depth: null });
 
