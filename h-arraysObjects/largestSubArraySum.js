@@ -26,12 +26,24 @@ function largestSubArraySum2 (array) {
 
     let maxSum = 0;
     let currMaxSum = 0;
+    let startIndex = 0;
+    let endIndex = 0;
+    let temp_startIndex = 0;
 
-    for (let num of array) {
-        currMaxSum += num;
-        if (currMaxSum < 0) currMaxSum = 0;
-        maxSum = Math.max(currMaxSum, maxSum);
+    for (let i = 0; i < array.length; i++) {
+        currMaxSum += array[i];
+        if (currMaxSum < 0) { // reset
+            currMaxSum = 0;
+            temp_startIndex = i + 1; // set new startIndex
+        }
+        // maxSum = Math.max(currMaxSum, maxSum);
+        if (maxSum < currMaxSum) {
+            maxSum = currMaxSum;
+            startIndex = temp_startIndex;
+            endIndex = i;
+        }
     }
+    console.log(`startIndex and endIndex: ${startIndex}, ${endIndex}`);
     return maxSum;
 }
 
