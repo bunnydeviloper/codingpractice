@@ -12,7 +12,7 @@ function loopLength (list) {
     p2 = p2.next.next; // fast pointer, will move twice as fast
 
     // when p1 meets p2, we found a cycle and break out of the loop
-    if (p1.value === p2.value) {
+    if (p1 === p2) {
       isLoop = true;
       break;
     }
@@ -25,7 +25,7 @@ function loopLength (list) {
   if (isLoop) {
     length++;
     p2 = p2.next;
-    while (p1.value !== p2.value) {
+    while (p1 !== p2) {
       length++;
       p2 = p2.next;
     }
