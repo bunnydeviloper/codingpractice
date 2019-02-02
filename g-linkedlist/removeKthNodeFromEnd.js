@@ -13,7 +13,7 @@ const myList = { head: one };
 const removeKthNodeFromEndLinkedList = (list, k) => {
   if (!list.head || k < 1) return;
 
-  let kthNodeFromEnd = list.head;
+  let nodeBeforeKthNodeFromEnd = list.head;
   let tempNode = list.head;
   let counter = 1;
 
@@ -28,24 +28,23 @@ const removeKthNodeFromEndLinkedList = (list, k) => {
   // if the tempNode is null, that means we only have kth elements
   // hence we remove kth node from end by changing head to head.next
   if (tempNode === null) {
-    // list.head.value = list.head.next.value;
     list.head = list.head.next;
+    return list;
   }
 
-  // else keep increasing the tempNode and kthNodeFromEnd
-  // at the same speed, once tempNode reach the end,
-  // kthNode will be kth away from end
-  while (tempNode !== null) {
-    beforeKth = kthNodeFromEnd;
-    kthNodeFromEnd = kthNodeFromEnd.next;
+  // else keep increasing the tempNode and nodeBeforeKthNodeFromEnd
+  while (tempNode.next !== null) {
+    nodeBeforeKthNodeFromEnd = nodeBeforeKthNodeFromEnd.next;
     tempNode = tempNode.next;
   }
 
   // remove kth node
-  beforeKth.next = kthNodeFromEnd.next;
+  nodeBeforeKthNodeFromEnd.next = nodeBeforeKthNodeFromEnd.next.next;
 
   return list;
 }
+
+// O(n) time | O(1) space, n is the length of the linked list
 
 // console.dir(myList, {depth: null});
 const result = removeKthNodeFromEndLinkedList(myList, 3);
@@ -55,7 +54,7 @@ console.dir(result, {depth: null});
 const invalidList = {
   head: { value: 1, next: { value: 2, next: null}}};
 const result2 = removeKthNodeFromEndLinkedList(invalidList, 3);
-console.log(result2);
+console.dir(result2, {depth: null});
 
 const shortList = { head: { value: "a", next: { value: "b", next: { value: "c", next: null }}}};
 const result3 = removeKthNodeFromEndLinkedList(shortList, 3);
