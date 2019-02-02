@@ -1,3 +1,18 @@
+function twoSum(array, n) {
+
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i+1; j < array.length; j++) {
+      //
+    }
+  }
+
+  return array;
+}
+
+const testInput = [3, 5, -4, 8, 11, 1, -1, 6]
+const testResult = twoSum(testInput, 10);
+console.log(testResult);
+
 // TIME: O(nlog(n)) | SPACE: O(1)
 const twoSumWithSortedArray = (array, n) => {
   // sort the array, time: O(nlogn)
