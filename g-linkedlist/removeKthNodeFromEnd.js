@@ -9,50 +9,55 @@ const two = { value: 2, next: three };
 const one = { value: 1, next: two };
 
 const myList = { head: one };
-const invalidList = { head: six };
-const shortList = { head: five };
 
 const removeKthNodeFromEndLinkedList = (list, k) => {
   if (!list.head || k < 1) return;
+
   let kthNodeFromEnd = list.head;
   let tempNode = list.head;
-  let counter = 0;
+  let counter = 1;
 
   // move tempNode to the kth position from head
   while (counter <= k) {
-    if (tempNode.next) {
+    if (tempNode) {
       tempNode = tempNode.next;
       counter++;
-    }
-    return 'Invalid K!';
+    } else return 'Invalid K!';
   }
 
-  // if the tempNode is null, that means we only have kth elements, hence we remove kth node from end by changing the head to head.next
+  // if the tempNode is null, that means we only have kth elements
+  // hence we remove kth node from end by changing head to head.next
   if (tempNode === null) {
     // list.head.value = list.head.next.value;
-    list.head.next = list.head.next;
+    list.head = list.head.next;
   }
 
-  // else keep increasing the tempNode and kthNodeFromEnd at the same speed, once tempNode reach the end, kthNode will be kth away from end
+  // else keep increasing the tempNode and kthNodeFromEnd
+  // at the same speed, once tempNode reach the end,
+  // kthNode will be kth away from end
   while (tempNode !== null) {
+    beforeKth = kthNodeFromEnd;
     kthNodeFromEnd = kthNodeFromEnd.next;
     tempNode = tempNode.next;
   }
-  
+
   // remove kth node
-  kthNodeFromEnd.next = kthNodeFromEnd.next.next;
+  beforeKth.next = kthNodeFromEnd.next;
 
   return list;
 }
 
-console.log(JSON.stringify(myList));
+// console.dir(myList, {depth: null});
 const result = removeKthNodeFromEndLinkedList(myList, 3);
 console.log('List after remove 3rd node from end: \n');
-console.log(JSON.stringify(result));
+console.dir(result, {depth: null});
 
+const invalidList = {
+  head: { value: 1, next: { value: 2, next: null}}};
 const result2 = removeKthNodeFromEndLinkedList(invalidList, 3);
-console.log('Invalid list: ', result2);
+console.log(result2);
 
+const shortList = { head: { value: "a", next: { value: "b", next: { value: "c", next: null }}}};
 const result3 = removeKthNodeFromEndLinkedList(shortList, 3);
 console.log('List after remove 3rd node from end: \n');
-console.log(result3);
+console.dir(result3, {depth: null});
