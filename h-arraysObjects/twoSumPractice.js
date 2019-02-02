@@ -39,20 +39,21 @@ const twoSumWithSortedArray = (array, n) => {
   // sort the array, time: O(nlogn)
   array.sort((a, b) => a - b);
 
-  let i = 0;
-  let left = array[i];
-  let right = array[array.length - 1];
+  let leftIndex = 0;
+  let rightIndex = array.length - 1;
 
-  while (left + right !== n) {
-    if (left + right > n) {
-      right = array[array.length - 1 - i]; // move right down
+  while (leftIndex < rightIndex) {
+    const currentSum = array[leftIndex] + array[rightIndex];
+    if (currentSum === n) {
+      return [array[leftIndex], array[rightIndex]];
+    } else if (currentSum > n) {
+      rightIndex--; // move right down
     } else {
-      left = array[i + 1]; // move left up
+      leftIndex++; // move left up
     }
-    i++;
   }
 
-  return (left + right === n) ? [left, right] : [];
+  return [];
 }
 
 const testResultWithSortedArray = twoSumWithSortedArray(testInput, 13);
