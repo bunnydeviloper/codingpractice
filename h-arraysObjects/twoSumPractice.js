@@ -17,19 +17,18 @@ console.log(testResult);
 
 function twoSumWithObject (array, n) {
   const hashTable = {};
+  const result = [];
 
-  for (let i = 0; i < array.length; i++) {
-    const currentValue = array[i];
+  array.map(currentValue => {
     const potentialMatch = n - currentValue;
-    if (!hashTable[potentialMatch]) {
-      hashTable[potentialMatch] = true;
-    } else {
-      return [currentValue, potentialMatch].sort((a, b) => b - a);
-    }
-  }
+    if (hashTable[currentValue] !== undefined) {
+      // check undefined b/c a 0 value will return falsy
+      result.push(hashTable[currentValue], currentValue);
+    } else hashTable[potentialMatch] = currentValue;
+  });
 
-  return [];
-}
+  return result.sort((a, b) => a - b);
+};
 
 const testResultWithObject = twoSumWithObject(testInput, 10);
 console.log(testResultWithObject);
