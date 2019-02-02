@@ -45,3 +45,14 @@ const removeKthNodeFromEndLinkedList = (list, k) => {
   return list;
 }
 
+console.log(JSON.stringify(myList));
+const result = removeKthNodeFromEndLinkedList(myList, 3);
+console.log('List after remove 3rd node from end: \n');
+console.log(JSON.stringify(result));
+
+const result2 = removeKthNodeFromEndLinkedList(invalidList, 3);
+console.log('Invalid list: ', result2);
+
+const result3 = removeKthNodeFromEndLinkedList(shortList, 3);
+console.log('List after remove 3rd node from end: \n');
+console.log(result3);
