@@ -1,13 +1,19 @@
+// TIME: O(n^2), SPACE: O(1)
 function twoSum(array, n) {
-
   for (let i = 0; i < array.length; i++) {
     for (let j = i+1; j < array.length; j++) {
-      //
+      if (array[i] + array[j] === n) {
+        return [array[i], array[j]].sort((a, b) => a - b);
+      }
     }
   }
 
-  return array;
+  return [];
 }
+
+const testInput = [3, 5, -4, 8, 11, 1, -1, 6]
+const testResult = twoSum(testInput, 10);
+console.log(testResult);
 
 function twoSumWithObject (array, n) {
   const hashTable = {};
@@ -24,10 +30,6 @@ function twoSumWithObject (array, n) {
 
   return [];
 }
-
-const testInput = [3, 5, -4, 8, 11, 1, -1, 6]
-const testResult = twoSum(testInput, 10);
-console.log(testResult);
 
 const testResultWithObject = twoSumWithObject(testInput, 10);
 console.log(testResultWithObject);
