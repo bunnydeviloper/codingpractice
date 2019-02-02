@@ -15,6 +15,7 @@ const testInput = [3, 5, -4, 8, 11, 1, -1, 6]
 const testResult = twoSum(testInput, 10);
 console.log(testResult);
 
+// TIME: O(n) | SPACE: O(n)
 function twoSumWithObject (array, n) {
   const hashTable = {};
   const result = [];
