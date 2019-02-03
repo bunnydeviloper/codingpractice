@@ -87,7 +87,29 @@ function mergeKSorted (arrays) {
   });
   heapify(minHeap); // O(K), helper fn
 
+  while (minHeap[0].value !== Infinity) {
+    // S2: add smallest element from heap (top value) to result arr
+    let top = minHeap[0];
+    result.push(top.value);
 
+    // S3: increment elem_index and substitute top value w/ next value
+    top.elemIndex++;
+
+    // if elemIndex is greater than length of arrays at arr_index
+    if (top.elemIndex >= arrays[top.arrayIndex].length) {
+      // set top value to INFINITY (will bubble all the way down)
+      top.value = Infinity;
+    } else {
+      // else, update top value to reflect the next elem in array
+      top.value = arrays[top.arrayIndex][top.elemIndex];
+    }
+
+    // S4: Bubble down the top value until it finds the correct level
+    bubbleDown(minHeap, 0);
+  }
+  // S5: Repeat S2 - S4 until you reach the end of ONE of the array
+
+  // S6: finished while loop, top elem of the heap is INFINITY, done
   return result;
 }
 
