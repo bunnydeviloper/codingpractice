@@ -20,7 +20,7 @@ const five = {
 const ten = { value: 10, left: five, right: fifteen };
 const myBst = { root: ten };
 
-// -----------------------------------------------
+// ------------------ USING RECURSION ---------------------
 // AVERAGE: O(log(n)) time | O(log(n)) space (b/c call stack)
 // WORST: O(n) time | O(n) space (when you have 1 deep branch)
 function findClosestValueInBst (tree, target) {
@@ -46,3 +46,18 @@ function findClosest (node, target, closestValue) {
 const test = findClosestValueInBst(myBst, 12);
 console.log(test); // { value: 10 }
 console.log(findClosestValueInBst({root: {}}, 5)); // null
+
+
+// ------------------ USING ITERATION ---------------------
+// AVERAGE: O(log(n)) time | O(log(n)) space (b/c call stack)
+// WORST: O(n) time | O(n) space (when you have 1 deep branch)
+function findClosestValueInBst2 (tree, target) {
+  if (!tree.root || !tree.root.value) return null;
+
+  return findClosestIterative(tree.root, target, c = tree.root.value);
+}
+
+const test = findClosestValueInBst(myBst, 12);
+console.log(test); // { value: 10 }
+console.log(findClosestValueInBst({root: {}}, 5)); // null
+
