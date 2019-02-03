@@ -10,5 +10,27 @@
 
 // Use Min Heap:
 // TIME: O(N*K*log(K)) | SPACE: O(N*K)
+// NK is total # of elems across all array
+// log(K) is maximum # of bubble down operations per elem (heap height)
 
+// S1: create a min heap with the first elem from each array
+// (total K elem) to track the smallest number
+// NOTE: store which_array and what_index the elem came from
+
+// S2: remove the smallest element from heap (top value)
+
+// S3: increment the elem_index and substitute value at the top
+// for the next value in that array
+
+// S4: Bubble down the top value until it finds the correct level
+
+
+// S5: Repeat S2 - S4 until you reach the end of ONE of the array
+
+// S6: At this point, substitute the value at the top for INFINITY
+// NOTE: Infinity will always bubble all the way down
+
+// S7: perform S6 anytime an array runs out of values
+// When the top elem of the heap is INFINITY, you're done
+// all the numbers are added to the result array
 
