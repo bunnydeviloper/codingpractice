@@ -12,10 +12,26 @@
 // TIME: O(N*K*log(K)) | SPACE: O(N*K)
 // NK is total # of elems across all array
 // log(K) is maximum # of bubble down operations per elem (heap height)
+// --------------------------------------------------
 
+
+// ------------------- AlL HELPER FUNCTIONS ----------------------
+
+function getChildIndices(index) {
+  return [(2 * index) + 1, (2 * index) + 2];
+}
+
+// calls the bubbleDown fn for every elem in the heap, start from back
+function heapify (minHeap) {
+  for (let i = minHeap.length - 1; i >= 0; i--) {
+    bubbleDown(minHeap, i);
+  }
+}
+
+// ------------------- MAIN FUNCTION ----------------------
 function mergeKSorted (arrays) {
   let result = [];
-  let minHeap = [];
+  let minHeap = []; // array of nodes (objects)
 
   // S1: create a min heap with the first elem from each array
   // (total K elem) to track the smallest number
