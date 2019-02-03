@@ -1,3 +1,4 @@
+// Credit: https://medium.com/outco/how-to-merge-k-sorted-arrays-c35d87aa298e
 // Merge K sorted array
 // SIMPLE: I: [[1, 3, 5, 7], [2, 4, 6, 8]], O: [1, 2, 3, 4, 5, 6, 7, 8]
 
