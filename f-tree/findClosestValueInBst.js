@@ -20,3 +20,15 @@ const five = {
 const ten = { value: 10, left: five, right: fifteen };
 const myBst = { root: ten };
 
+// -----------------------------------------------
+// AVERAGE: O(log(n)) time | O(log(n)) space (b/c call stack)
+// WORST: O(n) time | O(n) space (when you have 1 deep branch)
+function findClosestValueInBst (tree, target) {
+  if (!tree.root || !tree.root.value) return null;
+
+  return findClosest(tree.root, target, closestValue = tree.root.value);
+}
+
+const test = findClosestValueInBst(myBst, 12);
+console.log(test); // { value: 10 }
+console.log(findClosestValueInBst({root: {}}, 5)); // null
