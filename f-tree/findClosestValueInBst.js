@@ -26,7 +26,7 @@ const myBst = { root: ten };
 function findClosestValueInBst (tree, target) {
   if (!tree.root || !tree.root.value) return null;
 
-  return findClosest(tree.root, target, closestValue = tree.root.value);
+  return findClosest(tree.root, target, tree.root.value);
 }
 
 function findClosest (node, target, closestValue) {
@@ -54,10 +54,28 @@ console.log(findClosestValueInBst({root: {}}, 5)); // null
 function findClosestValueInBst2 (tree, target) {
   if (!tree.root || !tree.root.value) return null;
 
-  return findClosestIterative(tree.root, target, c = tree.root.value);
+  return findClosestIterative(tree.root, target, tree.root.value);
 }
 
-const test2 = findClosestValueInBst2(myBst, 2);
-console.log(test2); // 2
+function findClosestIterative(node, target, closest) {
+  let currentNode = node;
+
+  while (currentNode !== null) {
+    if (Math.abs(target - closest) > Math.abs(target - currentNode.value)) {
+      closest = currentNode.value;
+    }
+    if (target < currentNode.value) {
+      currentNode = currentNode.left;
+    } else if (target > currentNode.value) {
+      currentNode = currentNode.right;
+    } else {
+      break;
+    }
+  }
+  return closest;
+}
+
+console.log(findClosestValueInBst2(myBst, 2)); // 2
+console.log(findClosestValueInBst2(myBst, 25)); // 22
 console.log(findClosestValueInBst2({root: {}}, 5)); // null
 
