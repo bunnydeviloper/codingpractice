@@ -21,6 +21,29 @@ function getChildIndices(index) {
   return [(2 * index) + 1, (2 * index) + 2];
 }
 
+function bubbleDown (minHeap, index) {
+  let currentIndex = index;
+  let currentNode = minHeap[currentIndex];
+  let [leftChildIndex, rightChildIndex] = getChildIndices(currentIndex);
+
+  let minChildIndex = findMinChildIndex(minHeap, leftChildIndex, rightChildIndex);
+  let minChild = (minChildIndex === undefined) ? undefined : minHeap[minChildIndex];
+
+  while(minChild !== undefined && currentNode.value > minChild.value) {
+    // swap currentNode and minChildNode
+    [minHeap[currentIndex], minHeap[minChildIndex]] = [minHeap[minChildIndex], minHeap[currentIndex]];
+
+    // update currentIndex, repeat bubbling down
+    currentIndex = minChildIndex;
+
+    [leftChildIndex, rightChildIndex] = getChildIndices(currentIndex);
+
+    minChildIndex = findMinChildIndex(minHeap, leftChildIndex, rightChildIndex);
+
+    minChild = (minChildIndex === undefined) ? undefined : minHeap[minChildIndex];
+  }
+}
+
 // calls the bubbleDown fn for every elem in the heap, start from back
 function heapify (minHeap) {
   for (let i = minHeap.length - 1; i >= 0; i--) {
