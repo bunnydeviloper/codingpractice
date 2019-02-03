@@ -49,8 +49,8 @@ console.log(findClosestValueInBst({root: {}}, 5)); // null
 
 
 // ------------------ USING ITERATION ---------------------
-// AVERAGE: O(log(n)) time | O(log(n)) space (b/c call stack)
-// WORST: O(n) time | O(n) space (when you have 1 deep branch)
+// AVERAGE: O(log(n)) time | O(1) space
+// WORST: O(n) time | O(1) space
 function findClosestValueInBst2 (tree, target) {
   if (!tree.root || !tree.root.value) return null;
 
