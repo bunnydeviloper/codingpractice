@@ -17,6 +17,25 @@
 
 // ------------------- AlL HELPER FUNCTIONS ----------------------
 
+// BINARY MIN HEAP: parents nodes are smaller than both children
+// but there is no relationship between siblings nodes
+function findMinChildIndex(minHeap, leftChildIndex, rightChildIndex) {
+  let minChildIndex;
+  let leftChild = minHeap[leftChildIndex];
+  let rightChild = minHeap[rightChildIndex];
+
+  if (leftChild !== undefined) {
+    if (rightChild === undefined) {
+      minChildIndex = leftChildIndex;
+    } else {
+      minChildIndex = (rightChild.value < leftChild.value)
+        ? rightChildIndex
+        : leftChildIndex;
+    }
+  }
+  return minChildIndex; // undefined if there's no children
+}
+
 function getChildIndices(index) {
   return [(2 * index) + 1, (2 * index) + 2];
 }
