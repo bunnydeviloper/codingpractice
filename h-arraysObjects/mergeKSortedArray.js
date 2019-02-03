@@ -59,6 +59,15 @@ function mergeKSorted (arrays) {
   // S1: create a min heap with the first elem from each array
   // (total K elem) to track the smallest number
   // NOTE: store which_array and what_index the elem came from
+  arrays.forEach((arr, arr_index) => {
+    minHeap.push({
+      arrayIndex: arr_index,
+      elemIndex: 0,
+      value: arr[0],
+    });
+  });
+  heapify(minHeap); // O(K), helper fn
+
 
   return result;
 }
