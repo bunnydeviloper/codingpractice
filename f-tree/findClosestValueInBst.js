@@ -29,6 +29,20 @@ function findClosestValueInBst (tree, target) {
   return findClosest(tree.root, target, closestValue = tree.root.value);
 }
 
+function findClosest (node, target, closestValue) {
+  if (node === null) return closestValue;
+
+  if (Math.abs(target - closestValue) > Math.abs(target - node.value)) {
+    closestValue = node.value;
+  }
+
+  if (target < node.value) {
+    return findClosest(node.left, target, closestValue);
+  } else if (target > node.value) {
+    return findClosest(node.right, target, closestValue);
+  } else return closestValue;
+}
+
 const test = findClosestValueInBst(myBst, 12);
 console.log(test); // { value: 10 }
 console.log(findClosestValueInBst({root: {}}, 5)); // null
