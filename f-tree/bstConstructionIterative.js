@@ -50,6 +50,52 @@ class BST {
   remove(value, parent = null) {
     let currentNode = this;
 
+    while (currentNode !== null) {
+      // S1: search for node_to_remove
+      if (value < currentNode.value) { // search left subtree
+        parent = currentNode;
+        currentNode = currentNode.left;
+      } else if (value > currentNode.value) { // search right subtree
+        parent = currentNode;
+        currentNode = currentNode.right;
+
+      // S2: once found, remove the node and shift the rest accordingly
+      } else {
+        // case 1: if node_to_remove has both left & right subtree
+        if (currentNode.left !== null && currentNode.right !== null) {
+          currentNode.value = currentNode.right.getMinValue();
+          currentNode.right.remove(currentNode.value, currentNode);
+
+        // case 2: if node_to_remove has left || right || none subtree
+        } else {
+          // subcase 1: if node_to_remove is root
+          if (parent === null) {
+            if (currentNode.left !== null) {
+              currentNode.value = currentNode.left.value;
+              currentNode.right = currentNode.left.right;
+              currentNode.left = currentNode.left.left;
+            } else if (currentNode.right !== null) {
+              currentNode.value = currentNode.right.value;
+              currentNode.left = currentNode.right.left;
+              currentNode.right = currentNode.right.right;
+            } else {
+              currentNode.value = null;
+            }
+
+          // subcase 2: if node_to_remove is middle/end of the tree
+          } else if (parent.left === currentNode) {
+            parent.left = (currentNode.left !== null)
+              ? currentNode.left : currentNode.right;
+          } else if (parent.right === currentNode) {
+            parent.right = (currentNode.left !== null)
+              ? currentNode.left : currentNode.right;
+          }
+          break; // finished removing, break out of while loop
+        }
+      }
+    }
+
+    return this; // return tree, since currentNode has been removed
   }
 
   getMinValue() {
@@ -70,5 +116,11 @@ console.log(myTree.contains(8)); // false
 
 console.log(myTree.getMinValue()); // 1
 
-// myTree.remove(2).remove(1).remove(5);
-// myTree.insert(12).insert(14).insert(5); // tree w/ only right br
+myTree.remove(2).remove(1).remove(5);
+console.log(myTree); // should have only one node for 10
+console.log(myTree.contains(2)); // false
+
+myTree.insert(12).insert(14).insert(11); // tree w/ only right br
+console.dir(myTree, { depth: null });
+myTree.remove(10);
+console.dir(myTree, { depth: null });
