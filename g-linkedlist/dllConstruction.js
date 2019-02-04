@@ -74,7 +74,15 @@ class DoublyLinkedList {
   }
 
   removeNodesWithValue(value) {
-    //
+    let node = this.head;
+    while (node !== null) {
+      const nodeToRemove = node;
+      node = node.next;
+      if (nodeToRemove.value === value) {
+        this.remove(nodeToRemove);
+      }
+    }
+    return this;
   }
 
   remove(node) {
@@ -147,3 +155,12 @@ console.log(simpleLL.containsNodeWithValue(5)); // true
 simpleLL.remove(one).remove(five).remove(three);
 console.dir(simpleLL, { depth: null });
 
+simpleLL.head = one; simpleLL.tail = five;
+one.prev = null; one.next = two;
+two.prev = one; two.next = three;
+three.prev = two; three.next = four;
+four.prev = three; four.next = five;
+five.prev = four; five.next = null;
+// console.dir(simpleLL, { depth: null });
+simpleLL.removeNodesWithValue(3).removeNodesWithValue(1);
+console.dir(simpleLL, { depth: null });
