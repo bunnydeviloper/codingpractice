@@ -78,7 +78,23 @@ class DoublyLinkedList {
   }
 
   remove(node) {
-    //
+    if (node === this.head) {
+      this.head = node.next;
+    } else if (node === this.tail) {
+      this.tail = node.prev;
+    }
+    this.removeNodeBindings(node);
+  }
+
+  removeNodeBindings(node) {
+    if (node.prev !== null) {
+      node.prev.next = node.next;
+    }
+    if (node.next !== null) {
+      node.prev.next = node.next;
+    }
+    node.prev = null;
+    node.next = null;
   }
 
   containsNodeWithValue(value) {
@@ -93,13 +109,26 @@ class DoublyLinkedList {
 const emptyLL = new DoublyLinkedList();
 console.log(emptyLL);
 
-// Set up a simple LL: null <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> null
+const oneNodeLL = new DoublyLinkedList();
+const nine = new Node(9);
+oneNodeLL.head = nine;
+oneNodeLL.tail = nine;
+// console.log(oneNodeLL);
+
 const five = new Node(5);
 const four = new Node(4);
 const three = new Node(3);
 const two = new Node(2);
 const one = new Node(1);
 
+const twoNodeLL = new DoublyLinkedList();
+twoNodeLL.head = two;
+twoNodeLL.head.next = one;
+twoNodeLL.tail = one;
+twoNodeLL.tail.prev = two;
+// console.log(twoNodeLL);
+
+// Set up a simple LL: null <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> null
 one.prev = null; one.next = two;
 two.prev = one; two.next = three;
 three.prev = two; three.next = four;
