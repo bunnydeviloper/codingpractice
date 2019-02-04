@@ -74,12 +74,12 @@ class BST {
           // remove the root node by reassigning all left substree info
           this.value = this.left.value;
           this.right = this.left.right;
-          this.left = this.left.left;
+          this.left = this.left.left; // re-assign last, avoid overwrite
         } else if (this.right !== null) { // root has only right subtree
           // remove the root node by reassigning all right substree info
           this.value = this.right.value;
           this.left = this.right.left;
-          this.right = this.right.right;
+          this.right = this.right.right; // assign last, avoid overwrite
         } else { // root has no children nodes
           this.value = null;
         }
