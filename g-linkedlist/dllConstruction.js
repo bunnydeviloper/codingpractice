@@ -62,7 +62,21 @@ class DoublyLinkedList {
   }
 
   insertBefore(node, nodeToInsert) {
-    //
+    if (nodeToInsert === this.head && nodeToInsert === this.tail) {
+      return;
+    }
+    this.remove(nodeToInsert); // in case nodeToInsert already in ll
+    nodeToInsert.prev = node.prev;
+    nodeToInsert.next = node;
+
+    if (node.prev === null) {
+      this.head = nodeToInsert;
+    } else {
+      node.prev.next = nodeToInsert;
+    }
+    node.prev = nodeToInsert;
+
+    return this;
   }
 
   insertAfter(node, nodeToInsert) {
@@ -77,7 +91,7 @@ class DoublyLinkedList {
     let node = this.head;
     while (node !== null) {
       const nodeToRemove = node;
-      node = node.next;
+      node = node.next; // increment for next while loop iteration
       if (nodeToRemove.value === value) {
         this.remove(nodeToRemove);
       }
@@ -161,6 +175,18 @@ two.prev = one; two.next = three;
 three.prev = two; three.next = four;
 four.prev = three; four.next = five;
 five.prev = four; five.next = null;
-// console.dir(simpleLL, { depth: null });
 simpleLL.removeNodesWithValue(3).removeNodesWithValue(1);
-console.dir(simpleLL, { depth: null });
+// console.dir(simpleLL, { depth: null });
+console.log('after removal',
+  getNodeValuesHeadToTail(simpleLL),
+  getNodeValuesTailToHead(simpleLL),
+);
+
+simpleLL.insertBefore(two, new Node(7));
+simpleLL.insertBefore(five, new Node(8));
+// console.dir(simpleLL, { depth: null });
+console.log('insert 7 and 8: ',
+  getNodeValuesHeadToTail(simpleLL),
+  getNodeValuesTailToHead(simpleLL),
+);
+
