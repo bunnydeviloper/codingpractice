@@ -49,21 +49,18 @@ class DoublyLinkedList {
     if (this.head === null) { // empty ll
       this.head = node;
       this.tail = node;
-    } else {
-      this.insertBefore(this.head, node);
+      return this;
     }
-    return this;
+    this.insertBefore(this.head, node);
   }
 
   // TIME: O(1) | SPACE: O(1)
   setTail(node) {
     if (this.tail === null) { // empty ll
-      this.tail = node;
-      this.head = node;
-    } else {
-      this.insertAfter(this.tail, node);
+      this.setHead(node);
+      return this;
     }
-    return this;
+    this.insertAfter(this.tail, node);
   }
 
   // TIME: O(1) | SPACE: O(1)
@@ -117,15 +114,14 @@ class DoublyLinkedList {
       return this;
     }
     let node = this.head;
-    let currentPos = 1;
-    while (node !== null && currentPos !== position) {
+    let currentPosition = 1;
+    while (node !== null && currentPosition++ !== position) {
       node = node.next;
-      currentPos++;
     }
-    if (node === null) {
-      this.setTail(nodeToInsert);
-    } else {
+    if (node !== null) {
       this.insertBefore(node, nodeToInsert);
+    } else {
+      this.setTail(nodeToInsert);
     }
 
     return this;
@@ -147,10 +143,10 @@ class DoublyLinkedList {
   // TIME: O(1) | SPACE: O(1)
   remove(node) {
     if (node === this.head) { // if node_to_remove is head
-      this.head = node.next;
+      this.head = this.head.next;
     }
     if (node === this.tail) { // if node_to_remove is tail
-      this.tail = node.prev;
+      this.tail = this.tail.prev;
     }
     this.removeNodeBindings(node); // if node_to_remove is in middle
     return this;
