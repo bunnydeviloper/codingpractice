@@ -67,22 +67,27 @@ class BST {
         // remove the minValue node (this.value is now minValue)
         this.right.remove(this.value, this);
 
-        // when we only have one child node, or no child node
+      // when we only have one child node, or no children nodes
+      // Case 1: when node_to_remove (curr) is the root node of the tree
       } else if (parent === null) {
-        if (this.left !== null) {
+        if (this.left !== null) { // root has only left subtree
           this.value = this.left.value;
           this.right = this.left.right;
           this.left = this.left.left;
-        } else if (this.right !== null) {
+        } else if (this.right !== null) { // root has only right subtree
           this.value = this.right.value;
           this.left = this.right.left;
           this.right = this.right.right;
-        } else {
+        } else { // root has no children nodes
           this.value = null;
         }
-      } else if (parent.left === this) {
+
+      // Case 2: when node_to_remove (curr) is in the middle of the tree
+      } else if (parent.left === this) { // if left child = currNode
+        // remove currNode by pointing left child to currNode's child
         parent.left = (this.left !== null) ? this.left : this.right;
-      } else if (parent.right === this) {
+      } else if (parent.right === this) { // if right child = currNode
+        // remove currNode by pointing right child to currNode's child
         parent.right = (this.left !== null) ? this.left : this.right;
       }
     }
