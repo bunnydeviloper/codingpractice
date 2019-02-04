@@ -105,7 +105,23 @@ class DoublyLinkedList {
   }
 
   insertAtPosition(position, nodeToInsert) {
-    //
+    if (position === 1) {
+      this.setHead(nodeToInsert);
+      return this;
+    }
+    let node = this.head;
+    let currentPos = 1;
+    while (node !== null && currentPos !== position) {
+      node = node.next;
+      currentPos++;
+    }
+    if (node === null) {
+      this.setTail(nodeToInsert);
+    } else {
+      this.insertBefore(node, nodeToInsert);
+    }
+
+    return this;
   }
 
   removeNodesWithValue(value) {
@@ -229,6 +245,14 @@ console.log('set five to head: \n',
 );
 simpleLL.setTail(four);
 console.log('set four to tail: \n',
+  getNodeValuesHeadToTail(simpleLL),
+  getNodeValuesTailToHead(simpleLL),
+);
+
+simpleLL.insertAtPosition(5, new Node(10));
+simpleLL.insertAtPosition(15, new Node(10));
+simpleLL.insertAtPosition(1, new Node(10));
+console.log('insert at position: \n',
   getNodeValuesHeadToTail(simpleLL),
   getNodeValuesTailToHead(simpleLL),
 );
