@@ -46,7 +46,39 @@ class BST {
     }
   }
 
-  remove(value) {
+  remove(value, parent = null) {
+    if (value < this.value) {
+      if (this.left !== null) {
+        this.left.remove(value, this);
+      }
+    } else if (value > this.value) {
+      if (this.right !== null) {
+        this.right.remove(value, this);
+      }
+    } else { // when value === this.value
+      if (this.left !== null && this.right !== null) {
+        // replace current value with the min value
+        this.value = this.right.getMinValue();
+        // remove the minValue node
+        this.right.remove(this.value, this);
+      } else if (parent === null) {
+        if (this.left !== null) {
+          this.value = this.left.value;
+          this.right = this.left.right;
+          this.left = this.left.left;
+        } else if (this.right !== null) {
+          this.value = this.right.value;
+          this.left = this.right.left;
+          this.right = this.right.right;
+        } else {
+          this.value = null;
+        }
+      } else if (parent.left === this) {
+        parent.left = (this.left !== null) ? this.left : this.right;
+      } else if (parent.right === this) {
+        parent.right = (this.left !== null) ? this.left : this.right;
+      }
+    }
     return this;
   }
 
@@ -64,3 +96,6 @@ console.log(myTree.contains(30)); // false
 console.log(myTree.contains(15)); // true
 
 console.log(myTree.getMinValue()); // 2
+
+console.log(myTree.remove(30)); // doesn't remove anything
+console.log(myTree.remove(15));
