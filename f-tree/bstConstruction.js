@@ -46,6 +46,8 @@ class BST {
     }
   }
 
+  // AVERAGE: O(log(n)) time | O(log(n)) space
+  // WORST: O(n) time | O(n) space
   remove(value, parent = null) {
     if (value < this.value) {
       if (this.left !== null) {
