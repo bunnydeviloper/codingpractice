@@ -47,7 +47,7 @@ class DoublyLinkedList {
       this.head = node;
       this.tail = node;
     } else {
-      insertBefore(this.head, node);
+      this.insertBefore(this.head, node);
     }
     return this;
   }
@@ -57,19 +57,23 @@ class DoublyLinkedList {
       this.tail = node;
       this.head = node;
     } else {
-      insertAfter(this.tail, node);
+      this.insertAfter(this.tail, node);
     }
+    return this;
   }
 
   insertBefore(node, nodeToInsert) {
     if (nodeToInsert === this.head && nodeToInsert === this.tail) {
       return;
     }
-    this.remove(nodeToInsert); // in case nodeToInsert already in ll
+    // this.remove(nodeToInsert); // in case nodeToInsert already in ll
+    this.removeNodesWithValue(nodeToInsert.value);
+
+    // update all bindings
     nodeToInsert.prev = node.prev;
     nodeToInsert.next = node;
 
-    if (node.prev === null) {
+    if (node.prev === null) { // node is the head
       this.head = nodeToInsert;
     } else {
       node.prev.next = nodeToInsert;
@@ -80,7 +84,24 @@ class DoublyLinkedList {
   }
 
   insertAfter(node, nodeToInsert) {
-    //
+    if (nodeToInsert === this.head && nodeToInsert === this.tail) {
+      return;
+    }
+    // this.remove(nodeToInsert); // in case nodeToInsert already in ll
+    this.removeNodesWithValue(nodeToInsert.value);
+
+    // update all bindings
+    nodeToInsert.prev = node;
+    nodeToInsert.next = node.next;
+
+    if (node.next === null) { // node is the tail
+      this.tail = nodeToInsert;
+    } else {
+      node.next.prev = nodeToInsert;
+    }
+    node.next = nodeToInsert;
+
+    return this;
   }
 
   insertAtPosition(position, nodeToInsert) {
@@ -192,4 +213,13 @@ console.log('insert 7 and 8: ',
   getNodeValuesHeadToTail(simpleLL),
   getNodeValuesTailToHead(simpleLL),
 );
+
+simpleLL.insertAfter(five, new Node(9));
+simpleLL.insertAfter(four, new Node(9)); // dup value will be remove
+simpleLL.insertAfter(five, new Node(6));
+console.log('insert 9 and 6: ',
+  getNodeValuesHeadToTail(simpleLL),
+  getNodeValuesTailToHead(simpleLL),
+);
+
 
