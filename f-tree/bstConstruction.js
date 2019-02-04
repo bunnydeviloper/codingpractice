@@ -5,6 +5,8 @@ class BST {
     this.right = null;
   }
 
+  // AVERAGE: O(log(n)) time | O(log(n)) space
+  // WORST: O(n) time | O(n) space
   insert(value) {
     if (value < this.value) {
       if (this.left === null) {
