@@ -102,7 +102,8 @@ class DoublyLinkedList {
   remove(node) {
     if (node === this.head) { // if node_to_remove is head
       this.head = node.next;
-    } else if (node === this.tail) { // if node_to_remove is tail
+    }
+    if (node === this.tail) { // if node_to_remove is tail
       this.tail = node.prev;
     }
     this.removeNodeBindings(node); // if node_to_remove is in middle
@@ -168,6 +169,8 @@ console.log(simpleLL.containsNodeWithValue(5)); // true
 
 simpleLL.remove(one).remove(five).remove(three);
 console.dir(simpleLL, { depth: null });
+removeMultipleNodes(simpleLL, [two, four]);
+console.log('after remove all: ', simpleLL);
 
 simpleLL.head = one; simpleLL.tail = five;
 one.prev = null; one.next = two;
@@ -177,7 +180,7 @@ four.prev = three; four.next = five;
 five.prev = four; five.next = null;
 simpleLL.removeNodesWithValue(3).removeNodesWithValue(1);
 // console.dir(simpleLL, { depth: null });
-console.log('after removal',
+console.log('test removeNodesWithValue',
   getNodeValuesHeadToTail(simpleLL),
   getNodeValuesTailToHead(simpleLL),
 );
