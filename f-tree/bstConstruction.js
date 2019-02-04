@@ -49,6 +49,11 @@ class BST {
   remove(value) {
     return this;
   }
+
+  getMinValue() {
+    if (this.left === null) return this.value;
+    else return this.left.getMinValue();
+  }
 }
 
 const myTree = new BST(10);
@@ -57,3 +62,5 @@ console.dir(myTree, { depth: null });
 
 console.log(myTree.contains(30)); // false
 console.log(myTree.contains(15)); // true
+
+console.log(myTree.getMinValue()); // 2
