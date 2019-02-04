@@ -78,12 +78,12 @@ class DoublyLinkedList {
   }
 
   remove(node) {
-    if (node === this.head) {
+    if (node === this.head) { // if node_to_remove is head
       this.head = node.next;
-    } else if (node === this.tail) {
+    } else if (node === this.tail) { // if node_to_remove is tail
       this.tail = node.prev;
     }
-    this.removeNodeBindings(node);
+    this.removeNodeBindings(node); // if node_to_remove is in middle
     return this;
   }
 
