@@ -27,8 +27,21 @@ class BST {
   }
 
   contains(value) {
-    //
-    return true/false;
+    if (value < this.value) {
+      if (this.left === null) {
+        return false;
+      } else {
+        return this.left.contains(value);
+      }
+    } else if (value > this.value) {
+      if (this.right === null) {
+        return false;
+      } else {
+        return this.right.contains(value);
+      }
+    } else {
+      return true;
+    }
   }
 
   remove(value) {
@@ -39,3 +52,6 @@ class BST {
 const myTree = new BST(10);
 myTree.insert(10).insert(5).insert(15).insert(5).insert(2).insert(14).insert(22);
 console.dir(myTree, { depth: null });
+
+console.log(myTree.contains(30)); // false
+console.log(myTree.contains(15)); // true
