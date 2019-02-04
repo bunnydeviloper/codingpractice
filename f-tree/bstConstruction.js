@@ -21,7 +21,7 @@ class BST {
         this.right.insert(value); // recurse on the right side
       }
     } else { // when value === this.value
-      return this;
+      return this; // duplicate values, no insert
     }
     return this;
   }
@@ -33,16 +33,16 @@ class BST {
       if (this.left === null) {
         return false;
       } else {
-        return this.left.contains(value);
+        return this.left.contains(value); // recurse on left
       }
     } else if (value > this.value) {
       if (this.right === null) {
         return false;
       } else {
-        return this.right.contains(value);
+        return this.right.contains(value); // recurse on right
       }
-    } else {
-      return true;
+    } else { // when value === this.value
+      return true; // found the value
     }
   }
 
