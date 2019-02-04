@@ -47,6 +47,8 @@ class BST {
     return false;
   }
 
+  // AVERAGE: O(log(n)) time | O(1) space
+  // WORST: O(n) time | O(1) space (b/c not using call stack recursion)
   remove(value, parent = null) {
     let currentNode = this;
 
@@ -68,7 +70,7 @@ class BST {
 
         // case 2: if node_to_remove has left || right || none subtree
         } else {
-          // subcase 1: if node_to_remove is root
+          // subcase 1: if node_to_remove is root w/o parent
           if (parent === null) {
             if (currentNode.left !== null) {
               currentNode.value = currentNode.left.value;
