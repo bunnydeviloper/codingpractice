@@ -84,6 +84,7 @@ class DoublyLinkedList {
       this.tail = node.prev;
     }
     this.removeNodeBindings(node);
+    return this;
   }
 
   removeNodeBindings(node) {
@@ -91,7 +92,7 @@ class DoublyLinkedList {
       node.prev.next = node.next;
     }
     if (node.next !== null) {
-      node.prev.next = node.next;
+      node.next.prev = node.prev;
     }
     node.prev = null;
     node.next = null;
@@ -142,3 +143,7 @@ simpleLL.head = one; simpleLL.tail = five;
 // ---------- TESTS ------------
 console.log(simpleLL.containsNodeWithValue(8)); // false
 console.log(simpleLL.containsNodeWithValue(5)); // true
+
+simpleLL.remove(one).remove(five).remove(three);
+console.dir(simpleLL, { depth: null });
+
