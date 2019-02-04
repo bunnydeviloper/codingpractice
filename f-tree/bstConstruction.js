@@ -10,15 +10,15 @@ class BST {
   insert(value) {
     if (value < this.value) {
       if (this.left === null) {
-        this.left = new BST(value);
+        this.left = new BST(value); // insert the new node
       } else {
-        this.left.insert(value);
+        this.left.insert(value); // recurse on the left side
       }
     } else if (value > this.value) {
       if (this.right === null) {
-        this.right = new BST(value);
+        this.right = new BST(value); // insert the new node
       } else {
-        this.right.insert(value);
+        this.right.insert(value); // recurse on the right side
       }
     } else { // when value === this.value
       return this;
