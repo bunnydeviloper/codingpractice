@@ -32,7 +32,17 @@ class BST {
   }
 
   contains(value) {
-    return true;
+    let currentNode = this;
+    while (currentNode !== null) {
+      if (value < currentNode.value) {
+        currentNode = currentNode.left; // search on left subtree
+      } else if (value > currentNode.value) {
+        currentNode = currentNode.right; // search on right subtree
+      } else { // found the value
+        return true;
+      }
+    }
+    return false;
   }
 
   remove(value, parent = null) {
@@ -43,6 +53,9 @@ class BST {
 const myTree = new BST(10);
 myTree.insert(5).insert(2).insert(10).insert(1); // tree w/ only left br
 console.dir(myTree, { depth: null });
+
+console.log(myTree.contains(5)); // true
+console.log(myTree.contains(8)); // false
 
 // myTree.remove(2).remove(1).remove(5);
 // myTree.insert(12).insert(14).insert(5); // tree w/ only right br
