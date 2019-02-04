@@ -222,4 +222,14 @@ console.log('insert 9 and 6: ',
   getNodeValuesTailToHead(simpleLL),
 );
 
+simpleLL.setHead(five);
+console.log('set five to head: \n',
+  getNodeValuesHeadToTail(simpleLL),
+  getNodeValuesTailToHead(simpleLL),
+);
+simpleLL.setTail(four);
+console.log('set four to tail: \n',
+  getNodeValuesHeadToTail(simpleLL),
+  getNodeValuesTailToHead(simpleLL),
+);
 
