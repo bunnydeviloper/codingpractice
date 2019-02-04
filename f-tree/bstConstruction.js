@@ -105,7 +105,7 @@ class BST {
 
 const myTree = new BST(10);
 myTree.insert(10).insert(5).insert(15).insert(5).insert(2).insert(14).insert(22);
-console.dir(myTree, { depth: null });
+console.dir(myTree, { depth: null }); // no dups value
 
 console.log(myTree.contains(30)); // false
 console.log(myTree.contains(15)); // true
