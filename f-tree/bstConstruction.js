@@ -26,6 +26,8 @@ class BST {
     return this;
   }
 
+  // AVERAGE: O(log(n)) time | O(log(n)) space
+  // WORST: O(n) time | O(n) space
   contains(value) {
     if (value < this.value) {
       if (this.left === null) {
