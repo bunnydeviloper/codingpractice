@@ -48,7 +48,16 @@ class BST {
   }
 
   remove(value, parent = null) {
-    return this;
+    let currentNode = this;
+
+  }
+
+  getMinValue() {
+    let currentNode = this;
+    while (currentNode.left !== null) {
+      currentNode = currentNode.left;
+    }
+    return currentNode.value;
   }
 }
 
@@ -58,6 +67,8 @@ console.dir(myTree, { depth: null });
 
 console.log(myTree.contains(5)); // true
 console.log(myTree.contains(8)); // false
+
+console.log(myTree.getMinValue()); // 1
 
 // myTree.remove(2).remove(1).remove(5);
 // myTree.insert(12).insert(14).insert(5); // tree w/ only right br
