@@ -8,6 +8,33 @@ class Node {
   }
 }
 
+function getNodeValuesHeadToTail (ll) {
+  const values = [];
+  let node = ll.head;
+  while (node !== null) {
+    values.push(node.value);
+    node = node.next;
+  }
+  return values;
+}
+
+function getNodeValuesTailToHead (ll) {
+  const values = [];
+  let node = ll.tail;
+  while (node !== null) {
+    values.push(node.value);
+    node = node.prev;
+  }
+  return values;
+}
+
+function removeMultipleNodes (ll, nodes) {
+  for (const node of nodes) {
+    ll.remove(node);
+  }
+}
+
+// ------------------- DOUBLY LINKED LIST CONSTRUCTOR -----------------
 
 class DoublyLinkedList {
   constructor() {
