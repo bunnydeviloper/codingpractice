@@ -36,12 +36,15 @@ function removeMultipleNodes (ll, nodes) {
 
 // ------------------- DOUBLY LINKED LIST CONSTRUCTOR -----------------
 
+// LL is powerful, most operations are O(1) time, O(1) space
+// the only time it O(n) is when you need to traverse/search element
 class DoublyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
   }
 
+  // TIME: O(1) | SPACE: O(1)
   setHead(node) {
     if (this.head === null) { // empty ll
       this.head = node;
@@ -52,6 +55,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // TIME: O(1) | SPACE: O(1)
   setTail(node) {
     if (this.tail === null) { // empty ll
       this.tail = node;
@@ -62,6 +66,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // TIME: O(1) | SPACE: O(1)
   insertBefore(node, nodeToInsert) {
     if (nodeToInsert === this.head && nodeToInsert === this.tail) {
       return;
@@ -83,6 +88,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // TIME: O(1) | SPACE: O(1)
   insertAfter(node, nodeToInsert) {
     if (nodeToInsert === this.head && nodeToInsert === this.tail) {
       return;
@@ -104,6 +110,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // TIME: O(p) | SPACE: O(1): find the position, and perform insertion
   insertAtPosition(position, nodeToInsert) {
     if (position === 1) {
       this.setHead(nodeToInsert);
@@ -124,6 +131,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // TIME: O(n) | SPACE: O(1): essentially search for value and remove it
   removeNodesWithValue(value) {
     let node = this.head;
     while (node !== null) {
@@ -136,6 +144,7 @@ class DoublyLinkedList {
     return this;
   }
 
+  // TIME: O(1) | SPACE: O(1)
   remove(node) {
     if (node === this.head) { // if node_to_remove is head
       this.head = node.next;
@@ -158,6 +167,7 @@ class DoublyLinkedList {
     node.next = null;
   }
 
+  // TIME: O(n) | SPACE: O(1): we're iterating through each node
   containsNodeWithValue(value) {
     let node = this.head;
     while (node !== null && node.value !== value) {
