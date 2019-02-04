@@ -71,10 +71,12 @@ class BST {
       // Case 1: when node_to_remove (curr) is the root node of the tree
       } else if (parent === null) {
         if (this.left !== null) { // root has only left subtree
+          // remove the root node by reassigning all left substree info
           this.value = this.left.value;
           this.right = this.left.right;
           this.left = this.left.left;
         } else if (this.right !== null) { // root has only right subtree
+          // remove the root node by reassigning all right substree info
           this.value = this.right.value;
           this.left = this.right.left;
           this.right = this.right.right;
