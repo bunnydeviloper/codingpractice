@@ -31,6 +31,8 @@ class BST {
     return this;
   }
 
+  // AVERAGE: O(log(n)) time | O(1) space
+  // WORST: O(n) time | O(1) space (b/c not using call stack recursion)
   contains(value) {
     let currentNode = this;
     while (currentNode !== null) {
