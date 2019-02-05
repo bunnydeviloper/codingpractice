@@ -30,7 +30,8 @@ function getNthFibIMP (n, memoize = {1: 0, 2: 1} /* count 1st elem as 1 */) {
   // console.log(memoize);
   if (n <= 1) return 0;
   if (memoize[n]) return memoize[n]; // same as `if (n in memoize)`
-  return memoize[n] = getNthFibIMP(n-1, memoize) + getNthFibIMP(n-2, memoize);
+  memoize[n] = getNthFibIMP(n-1, memoize) + getNthFibIMP(n-2, memoize);
+  return memoize[n];
 }
 
 console.log('improve: ', getNthFibIMP(7)); // 8
