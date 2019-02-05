@@ -11,3 +11,23 @@ const one = { value: 1, left: two, right: three };
 const myTree = { root: one };
 
 // console.dir(myTree, { depth: null });
+
+// ------------------ INVERT A BST -------------------
+
+function swapLeftAndRightChild(tree) {
+  const temp = tree.left;
+  tree.left = tree.right;
+  tree.right = temp;
+}
+
+// TIME: O(n) | SPACE: O(depth_of_tree)
+function invertBst (tree) {
+  if (tree === null) return;
+  swapLeftAndRightChild(tree);
+  invertBst(tree.left);
+  invertBst(tree.right);
+  return tree;
+}
+
+const testResult = invertBst(myTree.root);
+console.dir(testResult, {depth: null});
