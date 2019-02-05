@@ -29,5 +29,24 @@ function invertBst (tree) {
   return tree;
 }
 
+// TIME: O(n) | SPACE: O(n)
+function invertBstIterative (tree) {
+  const queue = [tree];
+
+  while (queue.length) {
+    const current = queue.shift();
+    if (current === null) continue;
+
+    swapLeftAndRightChild(current);
+    queue.push(current.left);
+    queue.push(current.right);
+  }
+
+  return tree;
+}
+
 const testResult = invertBst(myTree.root);
 console.dir(testResult, {depth: null});
+console.log('----------------------------------------')
+const testAgain = invertBstIterative(testResult);
+console.dir(testAgain, {depth: null});
