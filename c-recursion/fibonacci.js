@@ -13,6 +13,7 @@ console.log('simple: ', fib(2)); // 1
 // Both fib() and getNthFib() analysis: Time: O(2^n) | Space: O(n)
 
 // note: if you start counting first elem as 1...
+// TIME: O(n^2) | SPACE: O(n) b/c of the call stack
 const getNthFib = (n) => {
   if (n === 2) return 1;
   else if (n === 1) return 0;
@@ -28,7 +29,7 @@ console.log(getNthFib(2)); // 1
 function getNthFibIMP (n, memoize = {1: 0, 2: 1} /* count 1st elem as 1 */) {
   // console.log(memoize);
   if (n <= 1) return 0;
-  if (memoize[n]) return memoize[n];
+  if (memoize[n]) return memoize[n]; // same as `if (n in memoize)`
   return memoize[n] = getNthFibIMP(n-1, memoize) + getNthFibIMP(n-2, memoize);
 }
 
