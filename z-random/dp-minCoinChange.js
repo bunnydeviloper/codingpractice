@@ -1,3 +1,4 @@
+// brute force solution, however, won't work for 135 [1, 4, 60, 75, 130]
 function minNumberOfCoinsForChange(n, demons) {
 	console.log(minNumberOfCoinsForChange2(24, [1, 2, 4, 9]));
 	return (minNumberOfCoinsForChange2(n, demons)); 
