@@ -1,7 +1,8 @@
 function depthFirstSearch(node, array = []) {
-  if (!node) return array;
+  if (!node.name) return array;
 
   array.push(node.name);
+
   for (const child of node.children) {
     depthFirstSearch(child, array);
   }
@@ -15,4 +16,6 @@ const a = {name: 'A', children: [b, {name: 'C', children: []}, d]};
 console.dir(a, { depth: null });
 
 const result = depthFirstSearch(a);
-console.log(result);
+console.log(result); // return [ 'A', 'B', 'E', 'F', 'I', 'J', 'C', 'D', 'G', 'K', 'H' ]
+
+console.log(depthFirstSearch({})); // return []
